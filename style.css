@@ -1,0 +1,24 @@
+.card-examples-detail {
+    display: flex;
+    flex-direction: column;
+    grid-gap: 64px;
+}
+
+#demo-1 {
+    width: 100%;
+    height: 400px;
+    background-color: lightgrey;
+    max-width: calc(100vw - 16px * 2);
+}
+#demo-1 > * {
+    width: 100% !important;
+}
+#demo-2 {
+    width: 100%;
+    height: 400px;
+    background-color: lightgrey;
+    max-width: calc(100vw - 16px * 2);
+}
+#demo-2 > * {
+    width: 100% !important;
+}
