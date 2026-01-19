@@ -1,11 +1,11 @@
 /**
  *
- * Custom Map 2.0.0
+ * Custom Map 2.0.1
  * Вставка карты на сайт
  *
  * Copyright 2025 Mihail Pridannikov
  *
- * Released on: January 29, 2025
+ * Released on: January 13, 2026
  *
  */
 
@@ -95,8 +95,15 @@ window.CustomMaps = function(settingsCustom) {
                             pointsList.push(item.coords);
                         });
                         myMap.setBounds(ymaps.util.bounds.fromPoints(pointsList));
+
+                        let zoomNew = myMap.getZoom();
+                        myMap.setZoom(16);
+                        myMap.setZoom(zoomNew);
+
                         window.addEventListener('resize', (e) => {
                             myMap.setBounds(ymaps.util.bounds.fromPoints(pointsList));
+                            myMap.setZoom(16);
+                            myMap.setZoom(zoomNew);
                         });
                     } else {
                         myMap.setBounds(myMap.geoObjects.getBounds());
