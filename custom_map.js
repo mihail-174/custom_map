@@ -1,11 +1,14 @@
 /**
  *
- * Custom Map 2.0.1
- * Вставка карты на сайт
+ * Custom Map
+ * Открытие модальных окон
  *
- * Copyright 2025 Mihail Pridannikov
- *
- * Released on: January 13, 2026
+ * @author      Mihail Pridannikov
+ * @copyright   2025-2026, Mihail Pridannikov
+ * @license MIT
+ * @version     2.0.1
+ * @release     January 13, 2026
+ * @link        https://github.com/mihail-174/custom_popup
  *
  */
 
