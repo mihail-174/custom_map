@@ -22,3 +22,9 @@
 #demo-2 > * {
     width: 100% !important;
 }
+#demo-3 {
+    width: 100%;
+    height: 400px;
+    background-color: lightgrey;
+    max-width: calc(100vw - 16px * 2);
+}

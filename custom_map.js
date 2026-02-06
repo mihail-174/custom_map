@@ -1,14 +1,14 @@
 /**
  *
  * Custom Map
- * Открытие модальных окон
+ * Кастомный вывод карты.
  *
  * @author      Mihail Pridannikov
  * @copyright   2025-2026, Mihail Pridannikov
  * @license MIT
  * @version     2.0.1
  * @release     January 13, 2026
- * @link        https://github.com/mihail-174/custom_popup
+ * @link        https://github.com/mihail-174/custom_map
  *
  */
 
@@ -37,16 +37,16 @@ window.CustomMaps = function(settingsCustom) {
     }
 
     const DEFAULT_SETTINGS = {
-        multi: false,
+        clusterer: false,
         selector: 'map',
         zoom: 16,
-        coords: [55.050432, 60.109599],
-        // coords: [
+        // coords: [55.050432, 60.109599],
+        // coordsList: [
         //     {
         //         name: 'Миасс',
         //         title: 'miass',
         //         coords: [55.050432, 60.109599],
-        //         balloonContent: '',
+        //         balloonContent: 'Содержимое всплывающей подсказки',
         //     }
         // ],
         // controls: ["zoomControl", "fullscreenControl"],
@@ -59,74 +59,20 @@ window.CustomMaps = function(settingsCustom) {
     let settings = this.deepMergeObjects(DEFAULT_SETTINGS, settingsCustom);
 
     this.init = function () {
-        if (settings.multi) {
-            if (typeof ymaps !== "undefined") {
-                ymaps.ready(() => {
-                    let myMap = new ymaps.Map(settings.selector, {
-                            center: [],
-                            zoom: settings.zoom,
-                            controls: settings.controls || ["zoomControl", "fullscreenControl"]
-                        }, {
-                            searchControlProvider: 'yandex#search',
-                            suppressMapOpenBlock: true
-                        }),
-                        objectManager = new ymaps.ObjectManager({
-                            clusterize: true,
-                            gridSize: 32,
-                            clusterDisableClickZoom: false
-                        });
 
-                    Object.values(settings.coords).map((item) => {
-                        myMap.geoObjects.add(
-                            new ymaps.Placemark(item.coords, {
-                                balloonContent: item.balloonContent,
-                            }, {
-                                iconLayout: 'default#image',
-                                iconImageHref: settings.iconImageHref,
-                                iconImageSize: settings.iconImageSize,
-                                iconImageOffset: settings.iconImageOffset,
-                                balloonCloseButton: true,
-                                hideIconOnBalloonOpen: true,
-                            })
-                        );
-                    });
-
-                    if (settings.zoom === 'all') {
-                        let pointsList = [];
-
-                        Object.values(settings.coords).map((item) => {
-                            pointsList.push(item.coords);
-                        });
-                        myMap.setBounds(ymaps.util.bounds.fromPoints(pointsList));
-
-                        let zoomNew = myMap.getZoom();
-                        myMap.setZoom(16);
-                        myMap.setZoom(zoomNew);
-
-                        window.addEventListener('resize', (e) => {
-                            myMap.setBounds(ymaps.util.bounds.fromPoints(pointsList));
-                            myMap.setZoom(16);
-                            myMap.setZoom(zoomNew);
-                        });
-                    } else {
-                        myMap.setBounds(myMap.geoObjects.getBounds());
-                    }
-
-                    myMap.behaviors.disable("scrollZoom");
+        if (typeof ymaps !== "undefined") {
+            ymaps.ready(() => {
+                const map = new ymaps.Map(settings.selector, {
+                    center: [],
+                    zoom: settings.zoom,
+                    controls: settings.controls || ["zoomControl", "fullscreenControl"]
+                }, {
+                    searchControlProvider: 'yandex#search',
+                    suppressMapOpenBlock: false,
                 });
-            }
-        } else {
-            if (typeof ymaps !== "undefined") {
-                ymaps.ready(() => {
-                    const myMap = new ymaps.Map(settings.selector, {
-                        center: Object.values(settings.coords),
-                        zoom: settings.zoom,
-                        controls: settings.controls || ["zoomControl", "fullscreenControl"]
-                    }, {
-                        searchControlProvider: 'yandex#search',
-                        suppressMapOpenBlock: true
-                    });
-                    const myPlacemark = new ymaps.Placemark(Object.values(settings.coords), {
+
+                if (typeof settings.coords === 'object') {
+                    const placemarks = new ymaps.Placemark(settings.coords, {
                         balloonContent: settings.balloonContent,
                     }, {
                         iconLayout: 'default#image',
@@ -134,15 +80,92 @@ window.CustomMaps = function(settingsCustom) {
                         iconImageSize: settings.iconImageSize,
                         iconImageOffset: settings.iconImageOffset,
                         balloonCloseButton: true,
-                        hideIconOnBalloonOpen: true,
+                        hideIconOnBalloonOpen: false,
                     });
-                    myMap.geoObjects.add(myPlacemark);
-                    myMap.behaviors.disable("scrollZoom");
-                });
-            }
+                    map.setCenter(settings.coords, settings.zoom);
+                    map.geoObjects.add(placemarks);
+                } else {
 
+                    let pointsList = [];
+                    settings.coordsList.map((item) => {
+                        pointsList.push(item.coords);
+                    });
+
+                    if (settings.clusters) {
+
+                        // Создание кластеризатора
+                        const clusterer = new ymaps.Clusterer({
+                            preset: "islands#invertedDarkBlueClusterIcons",
+                            groupByCoordinates: true,
+                            clusterDisableClickZoom: true,
+                            hasBalloon: false,
+                            hasHint: false,
+                            minClusterSize: 1,
+                            // clusterHideIconOnBalloonOpen: false,
+                            // geoObjectHideIconOnBalloonOpen: false
+                        });
+
+                        const placemarks = settings.coordsList.map((point) => {
+                            return new ymaps.Placemark(
+                                point.coords
+                            );
+                        });
+
+                        clusterer.add(placemarks);
+                        map.geoObjects.add(clusterer);
+
+                    } else {
+
+                        const placemarks = settings.coordsList.map((point) => {
+                            return new ymaps.Placemark(
+                                point.coords,
+                                {
+                                    balloonContent: point.balloonContent,
+                                }, {
+                                    iconLayout: 'default#image',
+                                    iconImageHref: settings.iconImageHref,
+                                    iconImageSize: settings.iconImageSize,
+                                    iconImageOffset: settings.iconImageOffset,
+                                    balloonCloseButton: true,
+                                    hideIconOnBalloonOpen: false,
+                                }
+                            );
+                        });
+
+                        Object.values(placemarks).map((item) => {
+                            map.geoObjects.add(item);
+                        });
+
+                    }
+
+                    if (pointsList.length === 1 || this.allElementsSame(pointsList)) {
+                        map.setCenter(pointsList[0], 16);
+                    } else {
+                        map.setBounds(ymaps.util.bounds.fromPoints(pointsList));
+                    }
+
+                    window.addEventListener('resize', (e) => {
+                        map.setBounds(ymaps.util.bounds.fromPoints(pointsList));
+                    });
+                }
+
+                map.behaviors.disable("scrollZoom");
+            });
         }
 
+    }
+
+     this.allElementsSame = function(arr) {
+        if (arr.length === 0) {
+            return true;
+        }
+        const firstElement = arr[0];
+        for (const element of arr) {
+            if (JSON.stringify(element) !== JSON.stringify(firstElement)) {
+                return false;
+            }
+        }
+        return true;
     }
 
     this.init();

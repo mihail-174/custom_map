@@ -80,51 +80,106 @@
                                 <div class="card-examples-detail__code">
                                     <div class="pre-wrapper">
                                         <pre><code>new CustomMaps({
-    multi: true,
     selector: 'demo-2',
-    zoom: 'all',
-    coords: [
+    zoom: 14,
+    clusters: false,
+    coordsList: [
         {
             name: 'Миасс',
             title: 'miass',
             coords: [55.050432, 60.109599],
-            balloonContent: 'Cодержимое всплывающей подсказки "Миасс"',
+            balloonContent: 'Содержимое всплывающей подсказки "Миасс"',
         },
         {
             name: 'Челябинск',
             title: 'chelyabinsk',
             coords: [55.159902, 61.402554],
-            balloonContent: 'Cодержимое всплывающей подсказки "Челябинск"',
+            balloonContent: 'Содержимое всплывающей подсказки "Челябинск"',
         },
         {
             name: 'Озерск',
             title: 'ozersk',
             coords: [55.763189, 60.707608],
-            balloonContent: 'Cодержимое всплывающей подсказки "Озерск"',
+            balloonContent: 'Содержимое всплывающей подсказки "Озерск"',
         },
         {
             name: 'Кыштым',
             title: 'kyshtym',
             coords: [55.707882, 60.538958],
-            balloonContent: 'Cодержимое всплывающей подсказки "Кыштым"',
+            balloonContent: 'Содержимое всплывающей подсказки "Кыштым"',
         },
         {
             name: 'Карабаш',
             title: 'karabash',
             coords: [55.488371, 60.203087],
-            balloonContent: 'Cодержимое всплывающей подсказки "Карабаш"',
+            balloonContent: 'Содержимое всплывающей подсказки "Карабаш"',
         },
         {
             name: 'Златоуст',
             title: 'zlatoust',
             coords: [55.173113, 59.672425],
-            balloonContent: 'Cодержимое всплывающей подсказки "Златоуст"',
+            balloonContent: 'Содержимое всплывающей подсказки "Златоуст"',
         },
     ],
 });</code></pre>
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="card-examples-detail__section">
+                                <h2 class="card-examples-detail__title">Карта с несколькими точками через кластеризатор</h2>
+                                <div class="card-examples-detail__content">
+                                    <div id="demo-3"></div>
+                                </div>
+                                <div class="card-examples-detail__code">
+                                    <div class="pre-wrapper">
+                                        <pre><code>new CustomMaps({
+    selector: 'demo-3',
+    zoom: 14,
+    clusters: true,
+    coordsList: [
+        {
+            name: 'Миасс',
+            title: 'miass',
+            coords: [55.050432, 60.109599],
+            balloonContent: 'Содержимое всплывающей подсказки "Миасс"',
+        },
+        {
+            name: 'Челябинск',
+            title: 'chelyabinsk',
+            coords: [55.159902, 61.402554],
+            balloonContent: 'Содержимое всплывающей подсказки "Челябинск"',
+        },
+        {
+            name: 'Озерск',
+            title: 'ozersk',
+            coords: [55.763189, 60.707608],
+            balloonContent: 'Содержимое всплывающей подсказки "Озерск"',
+        },
+        {
+            name: 'Кыштым',
+            title: 'kyshtym',
+            coords: [55.707882, 60.538958],
+            balloonContent: 'Содержимое всплывающей подсказки "Кыштым"',
+        },
+        {
+            name: 'Карабаш',
+            title: 'karabash',
+            coords: [55.488371, 60.203087],
+            balloonContent: 'Содержимое всплывающей подсказки "Карабаш"',
+        },
+        {
+            name: 'Златоуст',
+            title: 'zlatoust',
+            coords: [55.173113, 59.672425],
+            balloonContent: 'Содержимое всплывающей подсказки "Златоуст"',
+        },
+    ],
+});</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="card-examples-detail__button-return">
                                 <a class="button button-secondary button-m" href="https://mihail174.ru/docs/developments/custom_map">
                                     <span class="button__name">
@@ -157,45 +212,94 @@
         coords: [55.050432, 60.109599],
     });
     new CustomMaps({
-        multi: true,
         selector: 'demo-2',
-        zoom: 'all',
-        coords: [
+        zoom: 14,
+        clusters: false,
+        coordsList: [
             {
                 name: 'Миасс',
                 title: 'miass',
                 coords: [55.050432, 60.109599],
-                balloonContent: 'Cодержимое всплывающей подсказки "Миасс"',
+                balloonContent: 'Содержимое всплывающей подсказки "Миасс"',
             },
             {
                 name: 'Челябинск',
                 title: 'chelyabinsk',
                 coords: [55.159902, 61.402554],
-                balloonContent: 'Cодержимое всплывающей подсказки "Челябинск"',
+                balloonContent: 'Содержимое всплывающей подсказки "Челябинск"',
             },
             {
                 name: 'Озерск',
                 title: 'ozersk',
                 coords: [55.763189, 60.707608],
-                balloonContent: 'Cодержимое всплывающей подсказки "Озерск"',
+                balloonContent: 'Содержимое всплывающей подсказки "Озерск"',
             },
             {
                 name: 'Кыштым',
                 title: 'kyshtym',
                 coords: [55.707882, 60.538958],
-                balloonContent: 'Cодержимое всплывающей подсказки "Кыштым"',
+                balloonContent: 'Содержимое всплывающей подсказки "Кыштым"',
             },
             {
                 name: 'Карабаш',
                 title: 'karabash',
                 coords: [55.488371, 60.203087],
-                balloonContent: 'Cодержимое всплывающей подсказки "Карабаш"',
+                balloonContent: 'Содержимое всплывающей подсказки "Карабаш"',
             },
             {
                 name: 'Златоуст',
                 title: 'zlatoust',
                 coords: [55.173113, 59.672425],
-                balloonContent: 'Cодержимое всплывающей подсказки "Златоуст"',
+                balloonContent: 'Содержимое всплывающей подсказки "Златоуст"',
+            },
+        ],
+    });
+    new CustomMaps({
+        selector: 'demo-3',
+        zoom: 14,
+        clusters: true,
+        coordsList: [
+            {
+                name: 'Миасс',
+                title: 'miass',
+                coords: [55.050432, 60.109599],
+                balloonContent: 'Содержимое всплывающей подсказки "Миасс"',
+            },
+            {
+                name: 'Челябинск',
+                title: 'chelyabinsk',
+                coords: [55.159902, 61.402554],
+                balloonContent: 'Содержимое всплывающей подсказки "Челябинск"',
+            },
+            {
+                name: 'Челябинск',
+                title: 'chelyabinsk',
+                coords: [55.159902, 61.402554],
+                balloonContent: 'Содержимое всплывающей подсказки "Челябинск"',
+            },
+            {
+                name: 'Озерск',
+                title: 'ozersk',
+                coords: [55.763189, 60.707608],
+                balloonContent: 'Содержимое всплывающей подсказки "Озерск"',
+            },
+            {
+                name: 'Кыштым',
+                title: 'kyshtym',
+                coords: [55.707882, 60.538958],
+                balloonContent: 'Содержимое всплывающей подсказки "Кыштым"',
+            },
+            {
+                name: 'Карабаш',
+                title: 'karabash',
+                coords: [55.488371, 60.203087],
+                balloonContent: 'Содержимое всплывающей подсказки "Карабаш"',
+            },
+            {
+                name: 'Златоуст',
+                title: 'zlatoust',
+                coords: [55.173113, 59.672425],
+                balloonContent: 'Содержимое всплывающей подсказки "Златоуст"',
             },
         ],
     });
