@@ -38,7 +38,7 @@ window.CustomMaps = function(settingsCustom) {
 
     const DEFAULT_SETTINGS = {
         clusterer: false,
-        selector: 'map',
+        selector: '#map .map__map',
         zoom: 16,
         // coords: [55.050432, 60.109599],
         // coordsList: [
@@ -60,10 +60,12 @@ window.CustomMaps = function(settingsCustom) {
 
     this.init = function () {
 
+        const container = document.querySelector(settings.selector);
+
         if (typeof ymaps !== "undefined") {
             ymaps.ready(() => {
                 const map = new ymaps.Map(settings.selector, {
-                    center: [],
+                    center: [55.050432, 60.109599],
                     zoom: settings.zoom,
                     controls: settings.controls || ["zoomControl", "fullscreenControl"]
                 }, {
@@ -107,12 +109,18 @@ window.CustomMaps = function(settingsCustom) {
 
                         const placemarks = settings.coordsList.map((point) => {
                             return new ymaps.Placemark(
-                                point.coords
+                                point.coords,
+                                {
+                                    name: point.name,
+                                    description: point.description,
+                                }
                             );
                         });
 
                         clusterer.add(placemarks);
                         map.geoObjects.add(clusterer);
+
+                        clusterer.events.add("click", (e) => this.clickOnCluster(e));
 
                     } else {
 
@@ -154,6 +162,75 @@ window.CustomMaps = function(settingsCustom) {
         }
 
     }
+
+    // window.functionCreateCoordsFromObjectsForMap = function() {
+    //     coordsObjectsOnMap = [];
+    //     const CARDS = document.querySelectorAll('.card-apartment-2');
+    //     CARDS.forEach(card => {
+    //         const coords = card.getAttribute('data-coords').split(/\,[\s]|\,/);
+    //         const name = card.querySelector('.card-apartment-2__name .card-apartment-2__link').textContent;
+    //         const html = card.cloneNode(true);
+    //         if (coords.length > 1) {
+    //             coordsObjectsOnMap.push({
+    //                 coords: coords,
+    //                 name: name,
+    //                 description: html
+    //             })
+    //         }
+    //     });
+    //     // console.log(coordsObjectsOnMap)
+    // }
+    //
+
+
+
+     this.clickOnCluster = function(e) {
+         const cluster = e.get("target");
+         const map = cluster.getMap();
+         const mapContainer = map.container.getElement();
+         let popup = mapContainer.closest('.map').querySelector(".popup");
+         popup.classList.add('is-opened');
+         let popupContent = popup.querySelector(".popup__content-inner");
+         this.clearPopup(popupContent);
+
+         const objects = cluster.getGeoObjects ? cluster.getGeoObjects() : null;
+         objects.map((object) => {
+             console.log(object.properties._data)
+             const name = object.properties.get("name");
+             const description = object.properties.get("description") || null;
+
+             // Формируем HTML только если есть описание
+             let html = `<div class="map__item"><div class="map__item-name">${name}</div>`;
+             if (description) {
+                 html += `<div class="map__item-description">${description}</div>`;
+             }
+             html += `</div>`;
+
+             popupContent.insertAdjacentHTML('beforeend', html);
+         });
+
+         // this.openPopup(cluster, objects);
+     }
+
+    this.clearPopup = function(popupContent) {
+        popupContent.innerHTML = "";
+    }
+     // this.openPopup = function(cluster, objects) {
+     //     // const CARDS = document.querySelectorAll('.card-apartment-2');
+     //     // console.log(CARDS)
+     //
+     //     // function openModal(objects) {
+     //     //     const modal = document.querySelector(".block-object-on-map .popup");
+     //     //     const objectList = document.querySelector(".popup-objects-on-map .popup__content-inner");
+     //     //     objectList.innerHTML = "";
+     //     //     objects.map((object) => {
+     //     //         const name = object.properties.get("hintContent");
+     //     //         const description = object.properties.get("balloonContent");
+     //     //         objectList.appendChild(description);
+     //     //     });
+     //     //     modal.classList.add('is-opened');
+     //     // }
+     // }
 
      this.allElementsSame = function(arr) {
         if (arr.length === 0) {

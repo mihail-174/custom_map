@@ -1,0 +1,44 @@
+.map {
+    position: relative;
+}
+.map__popup {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 400px;
+    background-color: #fff;
+}
+.map__popup:has(.popup.is-opened) {
+    z-index: 1;
+}
+.map__map {
+
+}
+.map__item {
+    border-bottom: 1px solid var(--color-border);
+    padding: 8px 0;
+}
+.map__item:last-child {
+    border-bottom: none;
+}
+
+.popup {
+    /*opacity: 1;*/
+    /*visibility: visible;*/
+
+    position: static;
+    /*overflow: visible;*/
+    /*width: 100%;*/
+    height: 100%;
+}
+.popup__inner {
+    padding: 0;
+}
+.popup__content {
+    width: 100%;
+    height: 100%;
+}
+.popup.is-screen-fit .popup__inner {
+    align-items: flex-start;
+}

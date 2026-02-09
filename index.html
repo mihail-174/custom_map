@@ -10,11 +10,14 @@
     <meta name='format-detection' content='address=no' />
     <meta name='format-detection' content='email=no' />
     <title>Demo Custom Map</title>
-    <link rel="stylesheet" href="config.css" />
-    <link rel="stylesheet" href="layout.css" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="assets/css/config.css" />
+    <link rel="stylesheet" href="assets/css/layout.css" />
+    <link rel="stylesheet" href="assets/css/popup.css" />
+    <link rel="stylesheet" href="assets/css/map.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
     <script src="https://api-maps.yandex.ru/2.1/?&lang=ru_RU"></script>
-    <script src="custom_map.js"></script>
+    <script src="assets/js/custom_popup.js"></script>
+    <script src="assets/js/custom_map.js"></script>
 </head>
 <body>
 
@@ -131,51 +134,74 @@
                                 <div class="card-examples-detail__content">
                                     <div id="demo-3"></div>
                                 </div>
-                                <div class="card-examples-detail__code">
-                                    <div class="pre-wrapper">
-                                        <pre><code>new CustomMaps({
-    selector: 'demo-3',
-    zoom: 14,
-    clusters: true,
-    coordsList: [
-        {
-            name: 'Миасс',
-            title: 'miass',
-            coords: [55.050432, 60.109599],
-            balloonContent: 'Содержимое всплывающей подсказки "Миасс"',
-        },
-        {
-            name: 'Челябинск',
-            title: 'chelyabinsk',
-            coords: [55.159902, 61.402554],
-            balloonContent: 'Содержимое всплывающей подсказки "Челябинск"',
-        },
-        {
-            name: 'Озерск',
-            title: 'ozersk',
-            coords: [55.763189, 60.707608],
-            balloonContent: 'Содержимое всплывающей подсказки "Озерск"',
-        },
-        {
-            name: 'Кыштым',
-            title: 'kyshtym',
-            coords: [55.707882, 60.538958],
-            balloonContent: 'Содержимое всплывающей подсказки "Кыштым"',
-        },
-        {
-            name: 'Карабаш',
-            title: 'karabash',
-            coords: [55.488371, 60.203087],
-            balloonContent: 'Содержимое всплывающей подсказки "Карабаш"',
-        },
-        {
-            name: 'Златоуст',
-            title: 'zlatoust',
-            coords: [55.173113, 59.672425],
-            balloonContent: 'Содержимое всплывающей подсказки "Златоуст"',
-        },
-    ],
-});</code></pre>
+<!--                                <div class="card-examples-detail__code">-->
+<!--                                    <div class="pre-wrapper">-->
+<!--                                        <pre><code>new CustomMaps({-->
+<!--    selector: 'demo-3',-->
+<!--    zoom: 14,-->
+<!--    clusters: true,-->
+<!--    coordsList: [-->
+<!--        {-->
+<!--            name: 'Миасс',-->
+<!--            title: 'miass',-->
+<!--            coords: [55.050432, 60.109599],-->
+<!--            balloonContent: 'Содержимое всплывающей подсказки "Миасс"',-->
+<!--        },-->
+<!--        {-->
+<!--            name: 'Челябинск',-->
+<!--            title: 'chelyabinsk',-->
+<!--            coords: [55.159902, 61.402554],-->
+<!--            balloonContent: 'Содержимое всплывающей подсказки "Челябинск"',-->
+<!--        },-->
+<!--        {-->
+<!--            name: 'Озерск',-->
+<!--            title: 'ozersk',-->
+<!--            coords: [55.763189, 60.707608],-->
+<!--            balloonContent: 'Содержимое всплывающей подсказки "Озерск"',-->
+<!--        },-->
+<!--        {-->
+<!--            name: 'Кыштым',-->
+<!--            title: 'kyshtym',-->
+<!--            coords: [55.707882, 60.538958],-->
+<!--            balloonContent: 'Содержимое всплывающей подсказки "Кыштым"',-->
+<!--        },-->
+<!--        {-->
+<!--            name: 'Карабаш',-->
+<!--            title: 'karabash',-->
+<!--            coords: [55.488371, 60.203087],-->
+<!--            balloonContent: 'Содержимое всплывающей подсказки "Карабаш"',-->
+<!--        },-->
+<!--        {-->
+<!--            name: 'Златоуст',-->
+<!--            title: 'zlatoust',-->
+<!--            coords: [55.173113, 59.672425],-->
+<!--            balloonContent: 'Содержимое всплывающей подсказки "Златоуст"',-->
+<!--        },-->
+<!--    ],-->
+<!--});</code></pre>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+                            </div>
+
+                            <div class="card-examples-detail__section">
+                                <h2 class="card-examples-detail__title">Карта с несколькими точками через кластеризатор</h2>
+                                <div class="card-examples-detail__content">
+                                    <div class="map">
+                                        <div class="map__popup">
+                                            <div class="popup popup-default popup-objects-on-map">
+                                                <div class="popup__inner">
+<!--                                                    <div class="popup__overlay"></div>-->
+                                                    <div class="popup__content">
+                                                        <div class="popup__close"><span></span></div>
+                                                        <div class="popup__content-inner">
+                                                            <div class="h2 popup__title">Список объектов</div>
+                                                            sss
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="demo-4" class="map__map"></div>
                                     </div>
                                 </div>
                             </div>
@@ -207,103 +233,2118 @@
 </div>
 
 <script>
+    new CustomPopup();
+
+    // new CustomMaps({
+    //     selector: 'demo-1',
+    //     coords: [55.050432, 60.109599],
+    // });
+    // new CustomMaps({
+    //     selector: 'demo-2',
+    //     zoom: 14,
+    //     clusters: false,
+    //     coordsList: [
+    //         {
+    //             name: 'Миасс',
+    //             title: 'miass',
+    //             coords: [55.050432, 60.109599],
+    //             balloonContent: 'Содержимое всплывающей подсказки "Миасс"',
+    //         },
+    //         {
+    //             name: 'Челябинск',
+    //             title: 'chelyabinsk',
+    //             coords: [55.159902, 61.402554],
+    //             balloonContent: 'Содержимое всплывающей подсказки "Челябинск"',
+    //         },
+    //         {
+    //             name: 'Озерск',
+    //             title: 'ozersk',
+    //             coords: [55.763189, 60.707608],
+    //             balloonContent: 'Содержимое всплывающей подсказки "Озерск"',
+    //         },
+    //         {
+    //             name: 'Кыштым',
+    //             title: 'kyshtym',
+    //             coords: [55.707882, 60.538958],
+    //             balloonContent: 'Содержимое всплывающей подсказки "Кыштым"',
+    //         },
+    //         {
+    //             name: 'Карабаш',
+    //             title: 'karabash',
+    //             coords: [55.488371, 60.203087],
+    //             balloonContent: 'Содержимое всплывающей подсказки "Карабаш"',
+    //         },
+    //         {
+    //             name: 'Златоуст',
+    //             title: 'zlatoust',
+    //             coords: [55.173113, 59.672425],
+    //             balloonContent: 'Содержимое всплывающей подсказки "Златоуст"',
+    //         },
+    //     ],
+    // });
+    // new CustomMaps({
+    //     selector: 'demo-3',
+    //     zoom: 14,
+    //     clusters: true,
+    //     coordsList: [
+    //         {
+    //             name: 'Миасс',
+    //             title: 'miass',
+    //             coords: [55.050432, 60.109599],
+    //             balloonContent: 'Содержимое всплывающей подсказки "Миасс"',
+    //         },
+    //         {
+    //             name: 'Челябинск',
+    //             title: 'chelyabinsk',
+    //             coords: [55.159902, 61.402554],
+    //             balloonContent: 'Содержимое всплывающей подсказки "Челябинск"',
+    //         },
+    //         {
+    //             name: 'Челябинск',
+    //             title: 'chelyabinsk',
+    //             coords: [55.159902, 61.402554],
+    //             balloonContent: 'Содержимое всплывающей подсказки "Челябинск"',
+    //         },
+    //         {
+    //             name: 'Озерск',
+    //             title: 'ozersk',
+    //             coords: [55.763189, 60.707608],
+    //             balloonContent: 'Содержимое всплывающей подсказки "Озерск"',
+    //         },
+    //         {
+    //             name: 'Кыштым',
+    //             title: 'kyshtym',
+    //             coords: [55.707882, 60.538958],
+    //             balloonContent: 'Содержимое всплывающей подсказки "Кыштым"',
+    //         },
+    //         {
+    //             name: 'Карабаш',
+    //             title: 'karabash',
+    //             coords: [55.488371, 60.203087],
+    //             balloonContent: 'Содержимое всплывающей подсказки "Карабаш"',
+    //         },
+    //         {
+    //             name: 'Златоуст',
+    //             title: 'zlatoust',
+    //             coords: [55.173113, 59.672425],
+    //             balloonContent: 'Содержимое всплывающей подсказки "Златоуст"',
+    //         },
+    //     ],
+    // });
     new CustomMaps({
-        selector: 'demo-1',
-        coords: [55.050432, 60.109599],
-    });
-    new CustomMaps({
-        selector: 'demo-2',
-        zoom: 14,
-        clusters: false,
-        coordsList: [
-            {
-                name: 'Миасс',
-                title: 'miass',
-                coords: [55.050432, 60.109599],
-                balloonContent: 'Содержимое всплывающей подсказки "Миасс"',
-            },
-            {
-                name: 'Челябинск',
-                title: 'chelyabinsk',
-                coords: [55.159902, 61.402554],
-                balloonContent: 'Содержимое всплывающей подсказки "Челябинск"',
-            },
-            {
-                name: 'Озерск',
-                title: 'ozersk',
-                coords: [55.763189, 60.707608],
-                balloonContent: 'Содержимое всплывающей подсказки "Озерск"',
-            },
-            {
-                name: 'Кыштым',
-                title: 'kyshtym',
-                coords: [55.707882, 60.538958],
-                balloonContent: 'Содержимое всплывающей подсказки "Кыштым"',
-            },
-            {
-                name: 'Карабаш',
-                title: 'karabash',
-                coords: [55.488371, 60.203087],
-                balloonContent: 'Содержимое всплывающей подсказки "Карабаш"',
-            },
-            {
-                name: 'Златоуст',
-                title: 'zlatoust',
-                coords: [55.173113, 59.672425],
-                balloonContent: 'Содержимое всплывающей подсказки "Златоуст"',
-            },
-        ],
-    });
-    new CustomMaps({
-        selector: 'demo-3',
+        selector: 'demo-4',
         zoom: 14,
         clusters: true,
         coordsList: [
             {
-                name: 'Миасс',
-                title: 'miass',
-                coords: [55.050432, 60.109599],
-                balloonContent: 'Содержимое всплывающей подсказки "Миасс"',
+                coords: ["55.171316", "61.377622"],
+                name: 'ул. Героя России Кислова С.а., д. 3, кв. 550',
+                description: 'Коммерческое помещение',
             },
             {
-                name: 'Челябинск',
-                title: 'chelyabinsk',
-                coords: [55.159902, 61.402554],
-                balloonContent: 'Содержимое всплывающей подсказки "Челябинск"',
+                coords: ["55.171316", "61.377622"],
+                name: 'ул. Героя России Кислова С.а., д. 3, кв. 548',
+                description: 'Коммерческое помещение',
             },
             {
-                name: 'Челябинск',
-                title: 'chelyabinsk',
-                coords: [55.159902, 61.402554],
-                balloonContent: 'Содержимое всплывающей подсказки "Челябинск"',
+                coords: ["55.171316", "61.377622"],
+                name: 'ул. Героя России Кислова С.а., д. 3, кв. 509',
+                description: 'Коммерческое помещение',
             },
             {
-                name: 'Озерск',
-                title: 'ozersk',
-                coords: [55.763189, 60.707608],
-                balloonContent: 'Содержимое всплывающей подсказки "Озерск"',
+                name: '1 комната, 28.8 м², 8/11 эт',
+                coords: ["55.126256", "61.25616"],
             },
             {
-                name: 'Кыштым',
-                title: 'kyshtym',
-                coords: [55.707882, 60.538958],
-                balloonContent: 'Содержимое всплывающей подсказки "Кыштым"',
+                name: '1 комната, 32 м², 7/7-8 эт',
+                coords: ["55.124542", "61.248421"],
             },
             {
-                name: 'Карабаш',
-                title: 'karabash',
-                coords: [55.488371, 60.203087],
-                balloonContent: 'Содержимое всплывающей подсказки "Карабаш"',
+                name: '1 комната, 35.4 м², 3/11 эт',
+                coords: ["55.125820", "61.253805"],
             },
             {
-                name: 'Златоуст',
-                title: 'zlatoust',
-                coords: [55.173113, 59.672425],
-                balloonContent: 'Содержимое всплывающей подсказки "Златоуст"',
+                name: '1 комната, 35.4 м², 4/11 эт',
+                coords: ["55.125820", "61.253805"],
+            },
+            {
+                name: '1 комната, 35.4 м², 5/11 эт',
+                coords: ["55.125820", "61.253805"],
+            },
+            {
+                name: '1 комната, 35.4 м², 6/11 эт',
+                coords: ["55.125820", "61.253805"],
+            },
+            {
+                name: '1 комната, 35.4 м², 7/11 эт',
+                coords: ["55.125820", "61.253805"],
+            },
+            {
+                name: '1 комната, 35.4 м², 8/11 эт',
+                coords: ["55.125820", "61.253805"],
+            },
+            {
+                name: '1 комната, 35.4 м², 9/11 эт',
+                coords: ["55.125820", "61.253805"],
+            },
+            {
+                name: '1 комната, 35.4 м², 10/11 эт',
+                coords: ["55.125820", "61.253805"],
+            },
+            {
+                name: '1 комната, 35.4 м², 2/11 эт',
+                coords: ["55.125820", "61.253805"],
+            },
+            {
+                name: '2 комната, 35.4 м², 11/11 эт',
+                coords: ["55.125820", "61.253805"],
             },
         ],
     });
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="CatalogItemsList" class="block-content-realty__items" data-entity="container-1">
+    <!-- items-container -->
+
+    <div style="" class=" card-wrapper block-content-realty__item product-item-container" id="bx_3966226736_10713_7e1b8e3524755c391129a9d7e6f2d206" data-entity="item">
+
+
+        <div class="card-apartment-2" data-coords="">
+
+
+
+            <div class="card-apartment-2__favorite" onclick="ym(20223217,'reachGoal','click_favorite')">
+                <div data-like="false" data-favorite="" data-id="10713" data-key="18" class="flat__card-like realty__card-like favorite favorite_empty favorite_theme_red favorite_size_m">
+                    <div class="favorite__icon ">
+                        <svg width="24" height="21" viewBox="0 0 24 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3.71573 3.68905C6.00337 1.43698 9.71236 1.43698 12 3.68905C14.2876 1.43698 17.9966 1.43698 20.2843 3.68905C22.5719 5.94113 22.5719 9.59245 20.2843 11.8445L12.7015 19.3094C12.3123 19.6925 11.6877 19.6925 11.2985 19.3094L3.71573 11.8445C1.42809 9.59245 1.42809 5.94113 3.71573 3.68905Z" fill="white" stroke="gray" stroke-width="2.3"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="card-apartment-2__images-wrapper">
+                <div class="card-apartment-2__images">
+
+                    <div class="card-apartment-2__district">
+                    </div>
+                    <a href="/catalog/kommercheskaya-nedvizhimost/kommercheskoe-pomeshchenie-ul-zhenevskiy-bulvar-d-10-kv-1t/">
+                <span class="swiper">
+                    <span class="swiper-wrapper">
+                                                <span class="card-apartment-2__image">
+                            <img src="/local/templates/main/layout/dist/assets/images/rielt_noimg.png" alt="no_img" width="181" height="184" loading="lazy">
+                        </span>
+                                            </span>
+                </span>
+                    </a>
+                    <div class="dots"></div>
+
+                </div>
+            </div>
+
+            <div class="card-apartment-2__name">
+                <a class="card-apartment-2__link" href="/catalog/kommercheskaya-nedvizhimost/kommercheskoe-pomeshchenie-ul-zhenevskiy-bulvar-d-10-kv-1t/">
+                    Коммерческое помещение ул. Женевский Бульвар, д. 10, кв. 1Т        </a>
+            </div>
+
+            <div class="card-apartment-2__location">ул. Женевский Бульвар, д. 10</div>
+
+            <div class="card-apartment-2__price">
+                <div class="price price-current">
+                    <div class="price__value-wrapper">
+                        <div class="price__value">15 340 000</div>
+                        <div class="price__suffix rouble">p</div>
+                    </div>
+                </div>
+                <div class="card-apartment-2__volume">100 000 ₽/м²</div>
+            </div>
+
+
+            <div class="card-apartment-2__badges">
+
+
+                <div class="badge-product badge-product-house-rented-out badge-product_type_surface badge-product_size_m">
+                    Дом сдан
+                </div>
+
+
+                <div class="badge-product badge-product-due-date badge-product_type_surface badge-product_size_m">
+                    Срок сдачи 07.04.2016            </div>
+
+            </div>
+        </div>
+
+
+    </div>
+    <div class="card-banner-1">
+        <div class="card-banner-1__image">
+            <img src="/upload/iblock/33a/x2hyhf41ss897pdsxvvx3jm2f74ia99r.jpg" alt="Ипотека от 5%" width="270" height="580" loading="lazy">
+        </div>
+        <div class="card-banner-1__title">Ипотека от 5%</div>
+        <div class="card-banner-1__description">
+            <!-- Ипотека с господдержкой для семей с детьми -->    </div>
+        <div class="card-banner-1__button">
+            <a class="card-banner-1__button-link button button-primary button-m" href="/sposobi/semeynaya-ipoteka-ot-5/">
+                Подробнее            </a>
+        </div>
+    </div>
+
+
+    <div style="" class=" card-wrapper block-content-realty__item product-item-container" id="bx_3966226736_10695_c80764dfaf26ca80162484593ec7c29b" data-entity="item">
+
+
+        <div class="card-apartment-2" data-coords="55.171316,61.377622">
+
+
+
+            <div class="card-apartment-2__favorite" onclick="ym(20223217,'reachGoal','click_favorite')">
+                <div data-like="false" data-favorite="" data-id="10695" data-key="18" class="flat__card-like realty__card-like favorite favorite_empty favorite_theme_red favorite_size_m">
+                    <div class="favorite__icon ">
+                        <svg width="24" height="21" viewBox="0 0 24 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3.71573 3.68905C6.00337 1.43698 9.71236 1.43698 12 3.68905C14.2876 1.43698 17.9966 1.43698 20.2843 3.68905C22.5719 5.94113 22.5719 9.59245 20.2843 11.8445L12.7015 19.3094C12.3123 19.6925 11.6877 19.6925 11.2985 19.3094L3.71573 11.8445C1.42809 9.59245 1.42809 5.94113 3.71573 3.68905Z" fill="white" stroke="gray" stroke-width="2.3"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="card-apartment-2__images-wrapper">
+                <div class="card-apartment-2__images">
+
+                    <div class="card-apartment-2__district">
+                        <img src="/upload/iblock/14b/f659bfjpsb6nyipgosekrqbu5498qgv1.png" alt="" width="73" height="48" loading="lazy">
+                    </div>
+                    <a href="/catalog/kommercheskaya-nedvizhimost/kommercheskoe-pomeshchenie-ul-geroya-rossii-kislova-s-a-d-3-kv-548/">
+                <span class="swiper">
+                    <span class="swiper-wrapper">
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/064/300_300_1/1mxmqicahv0qs4euytwyrli5qhbyfr8h.png" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/562/300_300_1/dmechqbv4soniljjhde0n2vslfrluibh.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/8c8/300_300_1/os1jmg5p0wm2595ytndcvgos0zkpwqee.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/a18/300_300_1/mhp0en6lbuujhbm5emmdb5360jk5337i.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/433/300_300_1/hwjb02f83k6vxzs3b99tfv1z6l2mqnrl.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/901/300_300_1/h2sgmxohw6ju78ytswf28mayh2df2e14.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/34c/300_300_1/3qffv21q8aqhcs4j1ciy5sy2etw5yv95.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/fa8/300_300_1/2go37jkzxlymlp81qa6yga23oc3hpfqf.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/284/300_300_1/d6j2fi0exknf4be24fwmf5fp7wle8if6.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/05c/300_300_1/kouc2b3ksk0ygjtrki1z2e70jpxd3uxn.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/3c7/300_300_1/cc1uhs1vre86fwxvruu0km4e3pbl5qes.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/c17/300_300_1/jvpu7dgnl5rf07j9njluf8jy7b46jz9d.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/eb5/300_300_1/kdlk1f4ex379fsw7hliz1ddfmbqt1lvb.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/cea/300_300_1/x18u8wkgogyzb8k38dh9rhmiutf4pc1u.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/4fe/300_300_1/1y63r53sx2mosg0hdid133l3dgpkmfkx.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/62a/300_300_1/i8bxlj93g1jij772jc98oq4azoy2vc0w.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/2c6/300_300_1/jhhxc5fj8155vxex9331sugb1zxpkx39.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/bc0/300_300_1/c3hco8oxtep31n5vpx7dtfx1903ra4zq.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/00e/300_300_1/obt0nbkrlw1pa1j3y5u4c4wt7jq7naad.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                            </span>
+                </span>
+                    </a>
+                    <div class="dots"></div>
+
+                </div>
+            </div>
+
+            <div class="card-apartment-2__name">
+                <a class="card-apartment-2__link" href="/catalog/kommercheskaya-nedvizhimost/kommercheskoe-pomeshchenie-ul-geroya-rossii-kislova-s-a-d-3-kv-548/">
+                    Коммерческое помещение ул. Героя России Кислова С.а., д. 3, кв. 548        </a>
+            </div>
+
+            <div class="card-apartment-2__location">ул. Героя России Кислова С.а., д. 3</div>
+
+            <div class="card-apartment-2__price">
+                <div class="price price-current">
+                    <div class="price__value-wrapper">
+                        <div class="price__value">27 875 000</div>
+                        <div class="price__suffix rouble">p</div>
+                    </div>
+                </div>
+                <div class="card-apartment-2__volume">250 000 ₽/м²</div>
+            </div>
+
+
+            <div class="card-apartment-2__badges">
+
+
+
+
+                <div class="badge-product badge-product-due-date badge-product_type_surface badge-product_size_m">
+                    Срок сдачи 30.06.2025            </div>
+
+            </div>
+        </div>
+
+
+    </div>
+
+    <div style="" class=" card-wrapper block-content-realty__item product-item-container" id="bx_3966226736_10693_d0fb066f64e2309c4b241a491f76c62e" data-entity="item">
+
+
+        <div class="card-apartment-2" data-coords="55.171316,61.377622">
+
+
+
+            <div class="card-apartment-2__favorite" onclick="ym(20223217,'reachGoal','click_favorite')">
+                <div data-like="false" data-favorite="" data-id="10693" data-key="18" class="flat__card-like realty__card-like favorite favorite_empty favorite_theme_red favorite_size_m">
+                    <div class="favorite__icon ">
+                        <svg width="24" height="21" viewBox="0 0 24 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3.71573 3.68905C6.00337 1.43698 9.71236 1.43698 12 3.68905C14.2876 1.43698 17.9966 1.43698 20.2843 3.68905C22.5719 5.94113 22.5719 9.59245 20.2843 11.8445L12.7015 19.3094C12.3123 19.6925 11.6877 19.6925 11.2985 19.3094L3.71573 11.8445C1.42809 9.59245 1.42809 5.94113 3.71573 3.68905Z" fill="white" stroke="gray" stroke-width="2.3"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="card-apartment-2__images-wrapper">
+                <div class="card-apartment-2__images">
+
+                    <div class="card-apartment-2__district">
+                        <img src="/upload/iblock/14b/f659bfjpsb6nyipgosekrqbu5498qgv1.png" alt="" width="73" height="48" loading="lazy">
+                    </div>
+                    <a href="/catalog/kommercheskaya-nedvizhimost/kommercheskoe-pomeshchenie-ul-geroya-rossii-kislova-s-a-d-3-kv-509/">
+                <span class="swiper">
+                    <span class="swiper-wrapper">
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/b74/300_300_1/xgx5jm3w4rt3u6qzkk8fio929fkzqky4.png" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/562/300_300_1/dmechqbv4soniljjhde0n2vslfrluibh.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/8c8/300_300_1/os1jmg5p0wm2595ytndcvgos0zkpwqee.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/a18/300_300_1/mhp0en6lbuujhbm5emmdb5360jk5337i.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/433/300_300_1/hwjb02f83k6vxzs3b99tfv1z6l2mqnrl.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/901/300_300_1/h2sgmxohw6ju78ytswf28mayh2df2e14.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/34c/300_300_1/3qffv21q8aqhcs4j1ciy5sy2etw5yv95.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/fa8/300_300_1/2go37jkzxlymlp81qa6yga23oc3hpfqf.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/284/300_300_1/d6j2fi0exknf4be24fwmf5fp7wle8if6.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/05c/300_300_1/kouc2b3ksk0ygjtrki1z2e70jpxd3uxn.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/3c7/300_300_1/cc1uhs1vre86fwxvruu0km4e3pbl5qes.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/c17/300_300_1/jvpu7dgnl5rf07j9njluf8jy7b46jz9d.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/eb5/300_300_1/kdlk1f4ex379fsw7hliz1ddfmbqt1lvb.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/cea/300_300_1/x18u8wkgogyzb8k38dh9rhmiutf4pc1u.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/4fe/300_300_1/1y63r53sx2mosg0hdid133l3dgpkmfkx.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/62a/300_300_1/i8bxlj93g1jij772jc98oq4azoy2vc0w.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/2c6/300_300_1/jhhxc5fj8155vxex9331sugb1zxpkx39.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/bc0/300_300_1/c3hco8oxtep31n5vpx7dtfx1903ra4zq.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/00e/300_300_1/obt0nbkrlw1pa1j3y5u4c4wt7jq7naad.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                            </span>
+                </span>
+                    </a>
+                    <div class="dots"></div>
+
+                </div>
+            </div>
+
+            <div class="card-apartment-2__name">
+                <a class="card-apartment-2__link" href="/catalog/kommercheskaya-nedvizhimost/kommercheskoe-pomeshchenie-ul-geroya-rossii-kislova-s-a-d-3-kv-509/">
+                    Коммерческое помещение ул. Героя России Кислова С.а., д. 3, кв. 509        </a>
+            </div>
+
+            <div class="card-apartment-2__location">ул. Героя России Кислова С.а., д. 3</div>
+
+            <div class="card-apartment-2__price">
+                <div class="price price-current">
+                    <div class="price__value-wrapper">
+                        <div class="price__value">29 625 000</div>
+                        <div class="price__suffix rouble">p</div>
+                    </div>
+                </div>
+                <div class="card-apartment-2__volume">250 000 ₽/м²</div>
+            </div>
+
+
+            <div class="card-apartment-2__badges">
+
+
+
+
+                <div class="badge-product badge-product-due-date badge-product_type_surface badge-product_size_m">
+                    Срок сдачи 30.06.2025            </div>
+
+            </div>
+        </div>
+
+
+    </div>
+    <div class="card-banner-1">
+        <div class="card-banner-1__image">
+            <img src="/upload/iblock/00d/3v3gwekd3zrdkfd954ydimixaamwu762.jpg" alt="Рассрочка 0% от застройщика" width="270" height="580" loading="lazy">
+        </div>
+        <div class="card-banner-1__title">Рассрочка 0% от застройщика</div>
+        <div class="card-banner-1__description">
+        </div>
+        <div class="card-banner-1__button">
+            <a class="card-banner-1__button-link button button-primary button-m" href="/sposobi/rassrochka-0/">
+                Подробнее            </a>
+        </div>
+    </div>
+
+
+    <div style="" class=" card-wrapper block-content-realty__item product-item-container" id="bx_3966226736_10711_0f73996d13437b0b91038138616a89fe" data-entity="item">
+
+
+        <div class="card-apartment-2" data-coords="">
+
+
+
+            <div class="card-apartment-2__favorite" onclick="ym(20223217,'reachGoal','click_favorite')">
+                <div data-like="false" data-favorite="" data-id="10711" data-key="18" class="flat__card-like realty__card-like favorite favorite_empty favorite_theme_red favorite_size_m">
+                    <div class="favorite__icon ">
+                        <svg width="24" height="21" viewBox="0 0 24 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3.71573 3.68905C6.00337 1.43698 9.71236 1.43698 12 3.68905C14.2876 1.43698 17.9966 1.43698 20.2843 3.68905C22.5719 5.94113 22.5719 9.59245 20.2843 11.8445L12.7015 19.3094C12.3123 19.6925 11.6877 19.6925 11.2985 19.3094L3.71573 11.8445C1.42809 9.59245 1.42809 5.94113 3.71573 3.68905Z" fill="white" stroke="gray" stroke-width="2.3"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="card-apartment-2__images-wrapper">
+                <div class="card-apartment-2__images">
+
+                    <div class="card-apartment-2__district">
+                        <img src="/upload/iblock/03f/b3egofhu6meq8m91bs1k45m0dz8yj5it.png" alt="" width="73" height="48" loading="lazy">
+                    </div>
+                    <a href="/catalog/kommercheskaya-nedvizhimost/kommercheskoe-pomeshchenie-ul-dnepropetrovskaya-d-2-3-1-kv-7/">
+                <span class="swiper">
+                    <span class="swiper-wrapper">
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/3ee/300_300_1/kswaaaezhii3vz3oufhqdypk3manirn0.png" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/d01/300_300_1/vn7p1v82gf9xagc369cbg5j3jc99xays.png" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/a57/300_300_1/3m6277ti7fomu2liymcza7kpg3mzcw3s.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/22b/300_300_1/ey6ltz5r52n4k5gs0vxzig5fqtpn6g93.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                            </span>
+                </span>
+                    </a>
+                    <div class="dots"></div>
+
+                </div>
+            </div>
+
+            <div class="card-apartment-2__name">
+                <a class="card-apartment-2__link" href="/catalog/kommercheskaya-nedvizhimost/kommercheskoe-pomeshchenie-ul-dnepropetrovskaya-d-2-3-1-kv-7/">
+                    Коммерческое помещение ул. Днепропетровская, д. 2.3.1, кв. 7        </a>
+            </div>
+
+            <div class="card-apartment-2__location">ул. Днепропетровская, д. 2.3.1</div>
+
+            <div class="card-apartment-2__price">
+                <div class="price price-current">
+                    <div class="price__value-wrapper">
+                        <div class="price__value">33 612 500</div>
+                        <div class="price__suffix rouble">p</div>
+                    </div>
+                </div>
+                <div class="card-apartment-2__volume">250 000 ₽/м²</div>
+            </div>
+
+
+            <div class="card-apartment-2__badges">
+
+
+
+
+                <div class="badge-product badge-product-due-date badge-product_type_surface badge-product_size_m">
+                    Срок сдачи 03.09.2027            </div>
+
+            </div>
+        </div>
+
+
+    </div>
+
+    <div style="" class=" card-wrapper block-content-realty__item product-item-container" id="bx_3966226736_10710_ec5d0e2cff91ab20debac17d8febe5be" data-entity="item">
+
+
+        <div class="card-apartment-2" data-coords="">
+
+
+
+            <div class="card-apartment-2__favorite" onclick="ym(20223217,'reachGoal','click_favorite')">
+                <div data-like="false" data-favorite="" data-id="10710" data-key="18" class="flat__card-like realty__card-like favorite favorite_empty favorite_theme_red favorite_size_m">
+                    <div class="favorite__icon ">
+                        <svg width="24" height="21" viewBox="0 0 24 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3.71573 3.68905C6.00337 1.43698 9.71236 1.43698 12 3.68905C14.2876 1.43698 17.9966 1.43698 20.2843 3.68905C22.5719 5.94113 22.5719 9.59245 20.2843 11.8445L12.7015 19.3094C12.3123 19.6925 11.6877 19.6925 11.2985 19.3094L3.71573 11.8445C1.42809 9.59245 1.42809 5.94113 3.71573 3.68905Z" fill="white" stroke="gray" stroke-width="2.3"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="card-apartment-2__images-wrapper">
+                <div class="card-apartment-2__images">
+
+                    <div class="card-apartment-2__district">
+                        <img src="/upload/iblock/03f/b3egofhu6meq8m91bs1k45m0dz8yj5it.png" alt="" width="73" height="48" loading="lazy">
+                    </div>
+                    <a href="/catalog/kommercheskaya-nedvizhimost/kommercheskoe-pomeshchenie-ul-dnepropetrovskaya-d-2-3-1-kv-6/">
+                <span class="swiper">
+                    <span class="swiper-wrapper">
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/3ee/300_300_1/kswaaaezhii3vz3oufhqdypk3manirn0.png" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/d01/300_300_1/vn7p1v82gf9xagc369cbg5j3jc99xays.png" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/a57/300_300_1/3m6277ti7fomu2liymcza7kpg3mzcw3s.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/22b/300_300_1/ey6ltz5r52n4k5gs0vxzig5fqtpn6g93.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                            </span>
+                </span>
+                    </a>
+                    <div class="dots"></div>
+
+                </div>
+            </div>
+
+            <div class="card-apartment-2__name">
+                <a class="card-apartment-2__link" href="/catalog/kommercheskaya-nedvizhimost/kommercheskoe-pomeshchenie-ul-dnepropetrovskaya-d-2-3-1-kv-6/">
+                    Коммерческое помещение ул. Днепропетровская, д. 2.3.1, кв. 6        </a>
+            </div>
+
+            <div class="card-apartment-2__location">ул. Днепропетровская, д. 2.3.1</div>
+
+            <div class="card-apartment-2__price">
+                <div class="price price-current">
+                    <div class="price__value-wrapper">
+                        <div class="price__value">33 635 000</div>
+                        <div class="price__suffix rouble">p</div>
+                    </div>
+                </div>
+                <div class="card-apartment-2__volume">250 000 ₽/м²</div>
+            </div>
+
+
+            <div class="card-apartment-2__badges">
+
+
+
+
+                <div class="badge-product badge-product-due-date badge-product_type_surface badge-product_size_m">
+                    Срок сдачи 03.09.2027            </div>
+
+            </div>
+        </div>
+
+
+    </div>
+
+    <div style="" class=" card-wrapper block-content-realty__item product-item-container" id="bx_3966226736_10709_e7e5a53fd4b76e4dce4f311b34c340d4" data-entity="item">
+
+
+        <div class="card-apartment-2" data-coords="">
+
+
+
+            <div class="card-apartment-2__favorite" onclick="ym(20223217,'reachGoal','click_favorite')">
+                <div data-like="false" data-favorite="" data-id="10709" data-key="18" class="flat__card-like realty__card-like favorite favorite_empty favorite_theme_red favorite_size_m">
+                    <div class="favorite__icon ">
+                        <svg width="24" height="21" viewBox="0 0 24 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3.71573 3.68905C6.00337 1.43698 9.71236 1.43698 12 3.68905C14.2876 1.43698 17.9966 1.43698 20.2843 3.68905C22.5719 5.94113 22.5719 9.59245 20.2843 11.8445L12.7015 19.3094C12.3123 19.6925 11.6877 19.6925 11.2985 19.3094L3.71573 11.8445C1.42809 9.59245 1.42809 5.94113 3.71573 3.68905Z" fill="white" stroke="gray" stroke-width="2.3"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="card-apartment-2__images-wrapper">
+                <div class="card-apartment-2__images">
+
+                    <div class="card-apartment-2__district">
+                        <img src="/upload/iblock/03f/b3egofhu6meq8m91bs1k45m0dz8yj5it.png" alt="" width="73" height="48" loading="lazy">
+                    </div>
+                    <a href="/catalog/kommercheskaya-nedvizhimost/kommercheskoe-pomeshchenie-ul-dnepropetrovskaya-d-2-3-1-kv-5/">
+                <span class="swiper">
+                    <span class="swiper-wrapper">
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/3ee/300_300_1/kswaaaezhii3vz3oufhqdypk3manirn0.png" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/d01/300_300_1/vn7p1v82gf9xagc369cbg5j3jc99xays.png" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/a57/300_300_1/3m6277ti7fomu2liymcza7kpg3mzcw3s.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/22b/300_300_1/ey6ltz5r52n4k5gs0vxzig5fqtpn6g93.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                            </span>
+                </span>
+                    </a>
+                    <div class="dots"></div>
+
+                </div>
+            </div>
+
+            <div class="card-apartment-2__name">
+                <a class="card-apartment-2__link" href="/catalog/kommercheskaya-nedvizhimost/kommercheskoe-pomeshchenie-ul-dnepropetrovskaya-d-2-3-1-kv-5/">
+                    Коммерческое помещение ул. Днепропетровская, д. 2.3.1, кв. 5        </a>
+            </div>
+
+            <div class="card-apartment-2__location">ул. Днепропетровская, д. 2.3.1</div>
+
+            <div class="card-apartment-2__price">
+                <div class="price price-current">
+                    <div class="price__value-wrapper">
+                        <div class="price__value">33 635 000</div>
+                        <div class="price__suffix rouble">p</div>
+                    </div>
+                </div>
+                <div class="card-apartment-2__volume">250 000 ₽/м²</div>
+            </div>
+
+
+            <div class="card-apartment-2__badges">
+
+
+
+
+                <div class="badge-product badge-product-due-date badge-product_type_surface badge-product_size_m">
+                    Срок сдачи 03.09.2027            </div>
+
+            </div>
+        </div>
+
+
+    </div>
+
+    <div style="" class=" card-wrapper block-content-realty__item product-item-container" id="bx_3966226736_10703_4acf0f176831c66031059fe22bcc4d9c" data-entity="item">
+
+
+        <div class="card-apartment-2" data-coords="">
+
+
+
+            <div class="card-apartment-2__favorite" onclick="ym(20223217,'reachGoal','click_favorite')">
+                <div data-like="false" data-favorite="" data-id="10703" data-key="18" class="flat__card-like realty__card-like favorite favorite_empty favorite_theme_red favorite_size_m">
+                    <div class="favorite__icon ">
+                        <svg width="24" height="21" viewBox="0 0 24 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3.71573 3.68905C6.00337 1.43698 9.71236 1.43698 12 3.68905C14.2876 1.43698 17.9966 1.43698 20.2843 3.68905C22.5719 5.94113 22.5719 9.59245 20.2843 11.8445L12.7015 19.3094C12.3123 19.6925 11.6877 19.6925 11.2985 19.3094L3.71573 11.8445C1.42809 9.59245 1.42809 5.94113 3.71573 3.68905Z" fill="white" stroke="gray" stroke-width="2.3"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="card-apartment-2__images-wrapper">
+                <div class="card-apartment-2__images">
+
+                    <div class="card-apartment-2__district">
+                        <img src="/upload/iblock/733/92yyse3uo8uctadpve4dtymyv3zt0cbk.png" alt="" width="73" height="48" loading="lazy">
+                    </div>
+                    <a href="/catalog/kommercheskaya-nedvizhimost/kommercheskoe-pomeshchenie-ul-truda-d-14-kv-8t/">
+                <span class="swiper">
+                    <span class="swiper-wrapper">
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/a97/300_300_1/rtt282hzn2lo24f2rhxl9o8m5gb7ml2s.png" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/460/300_300_1/ef7xkhzo90znv09rfsmnsfcvs51w0pms.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/626/300_300_1/wjicanoeuz6hrc33k8sl4qgrwml91gvf.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/b5a/300_300_1/45794m4fsstfzcnmso3h5n3115s3mi0v.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/22a/300_300_1/8g5ljzngaju2ekjm3irg1twtx2x32wzn.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/d48/300_300_1/f8w2bc5zxoa258k143d2javthtgg2ctc.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                            </span>
+                </span>
+                    </a>
+                    <div class="dots"></div>
+
+                </div>
+            </div>
+
+            <div class="card-apartment-2__name">
+                <a class="card-apartment-2__link" href="/catalog/kommercheskaya-nedvizhimost/kommercheskoe-pomeshchenie-ul-truda-d-14-kv-8t/">
+                    Коммерческое помещение ул. Труда, д. 14, кв. 8Т        </a>
+            </div>
+
+            <div class="card-apartment-2__location">ул. Труда, д. 14</div>
+
+            <div class="card-apartment-2__price">
+                <div class="price price-current">
+                    <div class="price__value-wrapper">
+                        <div class="price__value">34 127 500</div>
+                        <div class="price__suffix rouble">p</div>
+                    </div>
+                </div>
+                <div class="card-apartment-2__volume">275 000 ₽/м²</div>
+            </div>
+
+
+            <div class="card-apartment-2__badges">
+
+
+
+
+                <div class="badge-product badge-product-due-date badge-product_type_surface badge-product_size_m">
+                    Срок сдачи 01.07.2027            </div>
+
+            </div>
+        </div>
+
+
+    </div>
+
+    <div style="" class=" card-wrapper block-content-realty__item product-item-container" id="bx_3966226736_10700_905587df90578eb4342842ad8de05a16" data-entity="item">
+
+
+        <div class="card-apartment-2" data-coords="">
+
+
+
+            <div class="card-apartment-2__favorite" onclick="ym(20223217,'reachGoal','click_favorite')">
+                <div data-like="false" data-favorite="" data-id="10700" data-key="18" class="flat__card-like realty__card-like favorite favorite_empty favorite_theme_red favorite_size_m">
+                    <div class="favorite__icon ">
+                        <svg width="24" height="21" viewBox="0 0 24 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3.71573 3.68905C6.00337 1.43698 9.71236 1.43698 12 3.68905C14.2876 1.43698 17.9966 1.43698 20.2843 3.68905C22.5719 5.94113 22.5719 9.59245 20.2843 11.8445L12.7015 19.3094C12.3123 19.6925 11.6877 19.6925 11.2985 19.3094L3.71573 11.8445C1.42809 9.59245 1.42809 5.94113 3.71573 3.68905Z" fill="white" stroke="gray" stroke-width="2.3"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="card-apartment-2__images-wrapper">
+                <div class="card-apartment-2__images">
+
+                    <div class="card-apartment-2__district">
+                        <img src="/upload/iblock/733/92yyse3uo8uctadpve4dtymyv3zt0cbk.png" alt="" width="73" height="48" loading="lazy">
+                    </div>
+                    <a href="/catalog/kommercheskaya-nedvizhimost/kommercheskoe-pomeshchenie-ul-truda-d-14-kv-4t/">
+                <span class="swiper">
+                    <span class="swiper-wrapper">
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/a97/300_300_1/rtt282hzn2lo24f2rhxl9o8m5gb7ml2s.png" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/460/300_300_1/ef7xkhzo90znv09rfsmnsfcvs51w0pms.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/626/300_300_1/wjicanoeuz6hrc33k8sl4qgrwml91gvf.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/b5a/300_300_1/45794m4fsstfzcnmso3h5n3115s3mi0v.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/4e9/300_300_1/lm0n5o98k362c0hadyhbfu5tv59vx7zs.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/d48/300_300_1/f8w2bc5zxoa258k143d2javthtgg2ctc.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                            </span>
+                </span>
+                    </a>
+                    <div class="dots"></div>
+
+                </div>
+            </div>
+
+            <div class="card-apartment-2__name">
+                <a class="card-apartment-2__link" href="/catalog/kommercheskaya-nedvizhimost/kommercheskoe-pomeshchenie-ul-truda-d-14-kv-4t/">
+                    Коммерческое помещение ул. Труда, д. 14, кв. 4Т        </a>
+            </div>
+
+            <div class="card-apartment-2__location">ул. Труда, д. 14</div>
+
+            <div class="card-apartment-2__price">
+                <div class="price price-current">
+                    <div class="price__value-wrapper">
+                        <div class="price__value">34 127 500</div>
+                        <div class="price__suffix rouble">p</div>
+                    </div>
+                </div>
+                <div class="card-apartment-2__volume">275 000 ₽/м²</div>
+            </div>
+
+
+            <div class="card-apartment-2__badges">
+
+
+
+
+                <div class="badge-product badge-product-due-date badge-product_type_surface badge-product_size_m">
+                    Срок сдачи 01.07.2027            </div>
+
+            </div>
+        </div>
+
+
+    </div>
+
+    <div style="" class=" card-wrapper block-content-realty__item product-item-container" id="bx_3966226736_10704_de8224b4f7bd52cd619e48f9536ed644" data-entity="item">
+
+
+        <div class="card-apartment-2" data-coords="">
+
+
+
+            <div class="card-apartment-2__favorite" onclick="ym(20223217,'reachGoal','click_favorite')">
+                <div data-like="false" data-favorite="" data-id="10704" data-key="18" class="flat__card-like realty__card-like favorite favorite_empty favorite_theme_red favorite_size_m">
+                    <div class="favorite__icon ">
+                        <svg width="24" height="21" viewBox="0 0 24 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3.71573 3.68905C6.00337 1.43698 9.71236 1.43698 12 3.68905C14.2876 1.43698 17.9966 1.43698 20.2843 3.68905C22.5719 5.94113 22.5719 9.59245 20.2843 11.8445L12.7015 19.3094C12.3123 19.6925 11.6877 19.6925 11.2985 19.3094L3.71573 11.8445C1.42809 9.59245 1.42809 5.94113 3.71573 3.68905Z" fill="white" stroke="gray" stroke-width="2.3"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="card-apartment-2__images-wrapper">
+                <div class="card-apartment-2__images">
+
+                    <div class="card-apartment-2__district">
+                        <img src="/upload/iblock/733/92yyse3uo8uctadpve4dtymyv3zt0cbk.png" alt="" width="73" height="48" loading="lazy">
+                    </div>
+                    <a href="/catalog/kommercheskaya-nedvizhimost/kommercheskoe-pomeshchenie-ul-truda-d-14-kv-9t/">
+                <span class="swiper">
+                    <span class="swiper-wrapper">
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/7cb/300_300_1/w20b3a9mlc1nnebl8jxtn0osp3ig5o6s.png" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/460/300_300_1/ef7xkhzo90znv09rfsmnsfcvs51w0pms.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/626/300_300_1/wjicanoeuz6hrc33k8sl4qgrwml91gvf.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/b5a/300_300_1/45794m4fsstfzcnmso3h5n3115s3mi0v.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/4e9/300_300_1/lm0n5o98k362c0hadyhbfu5tv59vx7zs.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/22a/300_300_1/8g5ljzngaju2ekjm3irg1twtx2x32wzn.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/d48/300_300_1/f8w2bc5zxoa258k143d2javthtgg2ctc.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                            </span>
+                </span>
+                    </a>
+                    <div class="dots"></div>
+
+                </div>
+            </div>
+
+            <div class="card-apartment-2__name">
+                <a class="card-apartment-2__link" href="/catalog/kommercheskaya-nedvizhimost/kommercheskoe-pomeshchenie-ul-truda-d-14-kv-9t/">
+                    Коммерческое помещение ул. Труда, д. 14, кв. 9Т        </a>
+            </div>
+
+            <div class="card-apartment-2__location">ул. Труда, д. 14</div>
+
+            <div class="card-apartment-2__price">
+                <div class="price price-current">
+                    <div class="price__value-wrapper">
+                        <div class="price__value">35 079 000</div>
+                        <div class="price__suffix rouble">p</div>
+                    </div>
+                </div>
+                <div class="card-apartment-2__volume">275 000 ₽/м²</div>
+            </div>
+
+
+            <div class="card-apartment-2__badges">
+
+
+
+
+                <div class="badge-product badge-product-due-date badge-product_type_surface badge-product_size_m">
+                    Срок сдачи 01.07.2027            </div>
+
+            </div>
+        </div>
+
+
+    </div>
+
+    <div style="" class=" card-wrapper block-content-realty__item product-item-container" id="bx_3966226736_10698_bba1b7f7802c6bb351319fcd6fe1262e" data-entity="item">
+
+
+        <div class="card-apartment-2" data-coords="">
+
+
+
+            <div class="card-apartment-2__favorite" onclick="ym(20223217,'reachGoal','click_favorite')">
+                <div data-like="false" data-favorite="" data-id="10698" data-key="18" class="flat__card-like realty__card-like favorite favorite_empty favorite_theme_red favorite_size_m">
+                    <div class="favorite__icon ">
+                        <svg width="24" height="21" viewBox="0 0 24 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3.71573 3.68905C6.00337 1.43698 9.71236 1.43698 12 3.68905C14.2876 1.43698 17.9966 1.43698 20.2843 3.68905C22.5719 5.94113 22.5719 9.59245 20.2843 11.8445L12.7015 19.3094C12.3123 19.6925 11.6877 19.6925 11.2985 19.3094L3.71573 11.8445C1.42809 9.59245 1.42809 5.94113 3.71573 3.68905Z" fill="white" stroke="gray" stroke-width="2.3"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="card-apartment-2__images-wrapper">
+                <div class="card-apartment-2__images">
+
+                    <div class="card-apartment-2__district">
+                        <img src="/upload/iblock/733/92yyse3uo8uctadpve4dtymyv3zt0cbk.png" alt="" width="73" height="48" loading="lazy">
+                    </div>
+                    <a href="/catalog/kommercheskaya-nedvizhimost/kommercheskoe-pomeshchenie-ul-truda-d-14-kv-1t/">
+                <span class="swiper">
+                    <span class="swiper-wrapper">
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/2d9/300_300_1/9adahmsttt1ds1cxy4gx5ge3amw46eob.png" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/220/300_300_1/0hdp9y8nf20dljf9cxty0vn248ezsiqh.png" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/460/300_300_1/ef7xkhzo90znv09rfsmnsfcvs51w0pms.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/626/300_300_1/wjicanoeuz6hrc33k8sl4qgrwml91gvf.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/b5a/300_300_1/45794m4fsstfzcnmso3h5n3115s3mi0v.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/4e9/300_300_1/lm0n5o98k362c0hadyhbfu5tv59vx7zs.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/22a/300_300_1/8g5ljzngaju2ekjm3irg1twtx2x32wzn.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/d48/300_300_1/f8w2bc5zxoa258k143d2javthtgg2ctc.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                            </span>
+                </span>
+                    </a>
+                    <div class="dots"></div>
+
+                </div>
+            </div>
+
+            <div class="card-apartment-2__name">
+                <a class="card-apartment-2__link" href="/catalog/kommercheskaya-nedvizhimost/kommercheskoe-pomeshchenie-ul-truda-d-14-kv-1t/">
+                    Коммерческое помещение ул. Труда, д. 14, кв. 1Т        </a>
+            </div>
+
+            <div class="card-apartment-2__location">ул. Труда, д. 14</div>
+
+            <div class="card-apartment-2__price">
+                <div class="price price-current">
+                    <div class="price__value-wrapper">
+                        <div class="price__value">45 036 750</div>
+                        <div class="price__suffix rouble">p</div>
+                    </div>
+                </div>
+                <div class="card-apartment-2__volume">275 000 ₽/м²</div>
+            </div>
+
+
+            <div class="card-apartment-2__badges">
+
+
+
+
+                <div class="badge-product badge-product-due-date badge-product_type_surface badge-product_size_m">
+                    Срок сдачи 01.07.2027            </div>
+
+            </div>
+        </div>
+
+
+    </div>
+    <div style="" class=" card-wrapper block-content-realty__item product-item-container" id="bx_3966226736_10701_7e1b8e3524755c391129a9d7e6f2d206" data-entity="item">
+
+
+        <div class="card-apartment-2" data-coords="">
+
+
+
+            <div class="card-apartment-2__favorite" onclick="ym(20223217,'reachGoal','click_favorite')">
+                <div data-like="false" data-favorite="" data-id="10701" data-key="18" class="flat__card-like realty__card-like favorite favorite_empty favorite_theme_red favorite_size_m">
+                    <div class="favorite__icon ">
+                        <svg width="24" height="21" viewBox="0 0 24 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3.71573 3.68905C6.00337 1.43698 9.71236 1.43698 12 3.68905C14.2876 1.43698 17.9966 1.43698 20.2843 3.68905C22.5719 5.94113 22.5719 9.59245 20.2843 11.8445L12.7015 19.3094C12.3123 19.6925 11.6877 19.6925 11.2985 19.3094L3.71573 11.8445C1.42809 9.59245 1.42809 5.94113 3.71573 3.68905Z" fill="white" stroke="gray" stroke-width="2.3"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="card-apartment-2__images-wrapper">
+                <div class="card-apartment-2__images">
+
+                    <div class="card-apartment-2__district">
+                        <img src="/upload/iblock/733/92yyse3uo8uctadpve4dtymyv3zt0cbk.png" alt="" width="73" height="48" loading="lazy">
+                    </div>
+                    <a href="/catalog/kommercheskaya-nedvizhimost/kommercheskoe-pomeshchenie-ul-truda-d-14-kv-5t/">
+                <span class="swiper">
+                    <span class="swiper-wrapper">
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/460/300_300_1/ef7xkhzo90znv09rfsmnsfcvs51w0pms.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/626/300_300_1/wjicanoeuz6hrc33k8sl4qgrwml91gvf.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/b5a/300_300_1/45794m4fsstfzcnmso3h5n3115s3mi0v.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/4e9/300_300_1/lm0n5o98k362c0hadyhbfu5tv59vx7zs.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/22a/300_300_1/8g5ljzngaju2ekjm3irg1twtx2x32wzn.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/d48/300_300_1/f8w2bc5zxoa258k143d2javthtgg2ctc.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                            </span>
+                </span>
+                    </a>
+                    <div class="dots"></div>
+
+                </div>
+            </div>
+
+            <div class="card-apartment-2__name">
+                <a class="card-apartment-2__link" href="/catalog/kommercheskaya-nedvizhimost/kommercheskoe-pomeshchenie-ul-truda-d-14-kv-5t/">
+                    Коммерческое помещение ул. Труда, д. 14, кв. 5Т        </a>
+            </div>
+
+            <div class="card-apartment-2__location">ул. Труда, д. 14</div>
+
+            <div class="card-apartment-2__price">
+                <div class="price price-current">
+                    <div class="price__value-wrapper">
+                        <div class="price__value">45 559 250</div>
+                        <div class="price__suffix rouble">p</div>
+                    </div>
+                </div>
+                <div class="card-apartment-2__volume">275 000 ₽/м²</div>
+            </div>
+
+
+            <div class="card-apartment-2__badges">
+
+
+
+
+                <div class="badge-product badge-product-due-date badge-product_type_surface badge-product_size_m">
+                    Срок сдачи 01.07.2027            </div>
+
+            </div>
+        </div>
+
+
+    </div><div style="" class=" card-wrapper block-content-realty__item product-item-container" id="bx_3966226736_10694_362ce596257894d11ab5c1d73d13c755" data-entity="item">
+
+
+    <div class="card-apartment-2" data-coords="55.171316,61.377622">
+
+
+
+        <div class="card-apartment-2__favorite" onclick="ym(20223217,'reachGoal','click_favorite')">
+            <div data-like="false" data-favorite="" data-id="10694" data-key="18" class="flat__card-like realty__card-like favorite favorite_empty favorite_theme_red favorite_size_m">
+                <div class="favorite__icon ">
+                    <svg width="24" height="21" viewBox="0 0 24 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3.71573 3.68905C6.00337 1.43698 9.71236 1.43698 12 3.68905C14.2876 1.43698 17.9966 1.43698 20.2843 3.68905C22.5719 5.94113 22.5719 9.59245 20.2843 11.8445L12.7015 19.3094C12.3123 19.6925 11.6877 19.6925 11.2985 19.3094L3.71573 11.8445C1.42809 9.59245 1.42809 5.94113 3.71573 3.68905Z" fill="white" stroke="gray" stroke-width="2.3"></path>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="card-apartment-2__images-wrapper">
+            <div class="card-apartment-2__images">
+
+                <div class="card-apartment-2__district">
+                    <img src="/upload/iblock/14b/f659bfjpsb6nyipgosekrqbu5498qgv1.png" alt="" width="73" height="48" loading="lazy">
+                </div>
+                <a href="/catalog/kommercheskaya-nedvizhimost/kommercheskoe-pomeshchenie-ul-geroya-rossii-kislova-s-a-d-3-kv-510/">
+                <span class="swiper">
+                    <span class="swiper-wrapper">
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/7de/300_300_1/zbum51511662bqqv20otdijfvypu5idf.png" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/562/300_300_1/dmechqbv4soniljjhde0n2vslfrluibh.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/8c8/300_300_1/os1jmg5p0wm2595ytndcvgos0zkpwqee.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/a18/300_300_1/mhp0en6lbuujhbm5emmdb5360jk5337i.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/433/300_300_1/hwjb02f83k6vxzs3b99tfv1z6l2mqnrl.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/901/300_300_1/h2sgmxohw6ju78ytswf28mayh2df2e14.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/34c/300_300_1/3qffv21q8aqhcs4j1ciy5sy2etw5yv95.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/fa8/300_300_1/2go37jkzxlymlp81qa6yga23oc3hpfqf.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/284/300_300_1/d6j2fi0exknf4be24fwmf5fp7wle8if6.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/05c/300_300_1/kouc2b3ksk0ygjtrki1z2e70jpxd3uxn.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/3c7/300_300_1/cc1uhs1vre86fwxvruu0km4e3pbl5qes.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/c17/300_300_1/jvpu7dgnl5rf07j9njluf8jy7b46jz9d.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/eb5/300_300_1/kdlk1f4ex379fsw7hliz1ddfmbqt1lvb.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/cea/300_300_1/x18u8wkgogyzb8k38dh9rhmiutf4pc1u.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/4fe/300_300_1/1y63r53sx2mosg0hdid133l3dgpkmfkx.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/62a/300_300_1/i8bxlj93g1jij772jc98oq4azoy2vc0w.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/2c6/300_300_1/jhhxc5fj8155vxex9331sugb1zxpkx39.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/bc0/300_300_1/c3hco8oxtep31n5vpx7dtfx1903ra4zq.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/00e/300_300_1/obt0nbkrlw1pa1j3y5u4c4wt7jq7naad.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                            </span>
+                </span>
+                </a>
+                <div class="dots"></div>
+
+            </div>
+        </div>
+
+        <div class="card-apartment-2__name">
+            <a class="card-apartment-2__link" href="/catalog/kommercheskaya-nedvizhimost/kommercheskoe-pomeshchenie-ul-geroya-rossii-kislova-s-a-d-3-kv-510/">
+                Коммерческое помещение ул. Героя России Кислова С.а., д. 3, кв. 510        </a>
+        </div>
+
+        <div class="card-apartment-2__location">ул. Героя России Кислова С.а., д. 3</div>
+
+        <div class="card-apartment-2__price">
+            <div class="price price-current">
+                <div class="price__value-wrapper">
+                    <div class="price__value">55 400 000</div>
+                    <div class="price__suffix rouble">p</div>
+                </div>
+            </div>
+            <div class="card-apartment-2__volume">250 000 ₽/м²</div>
+        </div>
+
+
+        <div class="card-apartment-2__badges">
+
+
+
+
+            <div class="badge-product badge-product-due-date badge-product_type_surface badge-product_size_m">
+                Срок сдачи 30.06.2025            </div>
+
+        </div>
+    </div>
+
+
+</div><div style="" class=" card-wrapper block-content-realty__item product-item-container" id="bx_3966226736_7832_c80764dfaf26ca80162484593ec7c29b" data-entity="item">
+
+
+    <div class="card-apartment-2" data-coords="">
+
+
+
+        <div class="card-apartment-2__favorite" onclick="ym(20223217,'reachGoal','click_favorite')">
+            <div data-like="false" data-favorite="" data-id="7832" data-key="18" class="flat__card-like realty__card-like favorite favorite_empty favorite_theme_red favorite_size_m">
+                <div class="favorite__icon ">
+                    <svg width="24" height="21" viewBox="0 0 24 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3.71573 3.68905C6.00337 1.43698 9.71236 1.43698 12 3.68905C14.2876 1.43698 17.9966 1.43698 20.2843 3.68905C22.5719 5.94113 22.5719 9.59245 20.2843 11.8445L12.7015 19.3094C12.3123 19.6925 11.6877 19.6925 11.2985 19.3094L3.71573 11.8445C1.42809 9.59245 1.42809 5.94113 3.71573 3.68905Z" fill="white" stroke="gray" stroke-width="2.3"></path>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="card-apartment-2__images-wrapper">
+            <div class="card-apartment-2__images">
+
+                <div class="card-apartment-2__district">
+                    <img src="/upload/iblock/a91/z1s2v5udiuvl2ta8uo80i4bivdjdbdqq.png" alt="" width="73" height="48" loading="lazy">
+                </div>
+                <a href="/catalog/kommercheskaya-nedvizhimost/kommercheskoe-pomeshchenie-ul-molodogvardeytsev-d-34-kv-200/">
+                <span class="swiper">
+                    <span class="swiper-wrapper">
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/bee/300_300_1/ekhrck6s6foeiivbtmzmrc94clnmthfk.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/00b/300_300_1/ymjn55qwkkvnh5ai3xlvwrjkqk7121kl.png" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/da1/300_300_1/eldnoyeutz8clwoqlqiyoopedfknm40a.png" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/b66/300_300_1/68jbj8pukoxtptp2uqqlaasrwb6xxe6l.png" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/ab9/300_300_1/m13yyrv7yyp5el8drkqc9yrzm5hjsgm2.png" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                            </span>
+                </span>
+                </a>
+                <div class="dots"></div>
+
+            </div>
+        </div>
+
+        <div class="card-apartment-2__name">
+            <a class="card-apartment-2__link" href="/catalog/kommercheskaya-nedvizhimost/kommercheskoe-pomeshchenie-ul-molodogvardeytsev-d-34-kv-200/">
+                Коммерческое помещение ул. Молодогвардейцев, д. 34, кв. 200        </a>
+        </div>
+
+        <div class="card-apartment-2__location">ул. Молодогвардейцев, д. 34</div>
+
+        <div class="card-apartment-2__price">
+            <div class="price price-current">
+                <div class="price__value-wrapper">
+                    <div class="price__value">57 080 000</div>
+                    <div class="price__suffix rouble">p</div>
+                </div>
+            </div>
+            <div class="card-apartment-2__volume">200 000 ₽/м²</div>
+        </div>
+
+
+        <div class="card-apartment-2__badges">
+
+
+
+
+
+        </div>
+    </div>
+
+
+</div><div style="" class=" card-wrapper block-content-realty__item product-item-container" id="bx_3966226736_10696_d0fb066f64e2309c4b241a491f76c62e" data-entity="item">
+
+
+    <div class="card-apartment-2" data-coords="55.171316,61.377622">
+
+
+
+        <div class="card-apartment-2__favorite" onclick="ym(20223217,'reachGoal','click_favorite')">
+            <div data-like="false" data-favorite="" data-id="10696" data-key="18" class="flat__card-like realty__card-like favorite favorite_empty favorite_theme_red favorite_size_m">
+                <div class="favorite__icon ">
+                    <svg width="24" height="21" viewBox="0 0 24 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3.71573 3.68905C6.00337 1.43698 9.71236 1.43698 12 3.68905C14.2876 1.43698 17.9966 1.43698 20.2843 3.68905C22.5719 5.94113 22.5719 9.59245 20.2843 11.8445L12.7015 19.3094C12.3123 19.6925 11.6877 19.6925 11.2985 19.3094L3.71573 11.8445C1.42809 9.59245 1.42809 5.94113 3.71573 3.68905Z" fill="white" stroke="gray" stroke-width="2.3"></path>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="card-apartment-2__images-wrapper">
+            <div class="card-apartment-2__images">
+
+                <div class="card-apartment-2__district">
+                    <img src="/upload/iblock/14b/f659bfjpsb6nyipgosekrqbu5498qgv1.png" alt="" width="73" height="48" loading="lazy">
+                </div>
+                <a href="/catalog/kommercheskaya-nedvizhimost/kommercheskoe-pomeshchenie-ul-geroya-rossii-kislova-s-a-d-3-kv-549/">
+                <span class="swiper">
+                    <span class="swiper-wrapper">
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/07c/300_300_1/m0z3eyef346yxur97idfvkwvgjbc2pf5.png" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/562/300_300_1/dmechqbv4soniljjhde0n2vslfrluibh.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/8c8/300_300_1/os1jmg5p0wm2595ytndcvgos0zkpwqee.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/a18/300_300_1/mhp0en6lbuujhbm5emmdb5360jk5337i.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/433/300_300_1/hwjb02f83k6vxzs3b99tfv1z6l2mqnrl.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/901/300_300_1/h2sgmxohw6ju78ytswf28mayh2df2e14.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/34c/300_300_1/3qffv21q8aqhcs4j1ciy5sy2etw5yv95.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/fa8/300_300_1/2go37jkzxlymlp81qa6yga23oc3hpfqf.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/284/300_300_1/d6j2fi0exknf4be24fwmf5fp7wle8if6.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/05c/300_300_1/kouc2b3ksk0ygjtrki1z2e70jpxd3uxn.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/3c7/300_300_1/cc1uhs1vre86fwxvruu0km4e3pbl5qes.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/c17/300_300_1/jvpu7dgnl5rf07j9njluf8jy7b46jz9d.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/eb5/300_300_1/kdlk1f4ex379fsw7hliz1ddfmbqt1lvb.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/cea/300_300_1/x18u8wkgogyzb8k38dh9rhmiutf4pc1u.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/4fe/300_300_1/1y63r53sx2mosg0hdid133l3dgpkmfkx.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/62a/300_300_1/i8bxlj93g1jij772jc98oq4azoy2vc0w.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/2c6/300_300_1/jhhxc5fj8155vxex9331sugb1zxpkx39.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/bc0/300_300_1/c3hco8oxtep31n5vpx7dtfx1903ra4zq.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/00e/300_300_1/obt0nbkrlw1pa1j3y5u4c4wt7jq7naad.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                            </span>
+                </span>
+                </a>
+                <div class="dots"></div>
+
+            </div>
+        </div>
+
+        <div class="card-apartment-2__name">
+            <a class="card-apartment-2__link" href="/catalog/kommercheskaya-nedvizhimost/kommercheskoe-pomeshchenie-ul-geroya-rossii-kislova-s-a-d-3-kv-549/">
+                Коммерческое помещение ул. Героя России Кислова С.а., д. 3, кв. 549        </a>
+        </div>
+
+        <div class="card-apartment-2__location">ул. Героя России Кислова С.а., д. 3</div>
+
+        <div class="card-apartment-2__price">
+            <div class="price price-current">
+                <div class="price__value-wrapper">
+                    <div class="price__value">66 725 000</div>
+                    <div class="price__suffix rouble">p</div>
+                </div>
+            </div>
+            <div class="card-apartment-2__volume">250 000 ₽/м²</div>
+        </div>
+
+
+        <div class="card-apartment-2__badges">
+
+
+
+
+            <div class="badge-product badge-product-due-date badge-product_type_surface badge-product_size_m">
+                Срок сдачи 30.06.2025            </div>
+
+        </div>
+    </div>
+
+
+</div><div style="" class=" card-wrapper block-content-realty__item product-item-container" id="bx_3966226736_10712_8e8f6cea7f5e44ced2966cbefca3ecfa" data-entity="item">
+
+
+    <div class="card-apartment-2" data-coords="">
+
+
+
+        <div class="card-apartment-2__favorite" onclick="ym(20223217,'reachGoal','click_favorite')">
+            <div data-like="false" data-favorite="" data-id="10712" data-key="18" class="flat__card-like realty__card-like favorite favorite_empty favorite_theme_red favorite_size_m">
+                <div class="favorite__icon ">
+                    <svg width="24" height="21" viewBox="0 0 24 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3.71573 3.68905C6.00337 1.43698 9.71236 1.43698 12 3.68905C14.2876 1.43698 17.9966 1.43698 20.2843 3.68905C22.5719 5.94113 22.5719 9.59245 20.2843 11.8445L12.7015 19.3094C12.3123 19.6925 11.6877 19.6925 11.2985 19.3094L3.71573 11.8445C1.42809 9.59245 1.42809 5.94113 3.71573 3.68905Z" fill="white" stroke="gray" stroke-width="2.3"></path>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="card-apartment-2__images-wrapper">
+            <div class="card-apartment-2__images">
+
+                <div class="card-apartment-2__district">
+                    <img src="/upload/iblock/03f/b3egofhu6meq8m91bs1k45m0dz8yj5it.png" alt="" width="73" height="48" loading="lazy">
+                </div>
+                <a href="/catalog/kommercheskaya-nedvizhimost/kommercheskoe-pomeshchenie-ul-dnepropetrovskaya-d-2-3-1-kv-8/">
+                <span class="swiper">
+                    <span class="swiper-wrapper">
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/3ee/300_300_1/kswaaaezhii3vz3oufhqdypk3manirn0.png" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/d01/300_300_1/vn7p1v82gf9xagc369cbg5j3jc99xays.png" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/a57/300_300_1/3m6277ti7fomu2liymcza7kpg3mzcw3s.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/22b/300_300_1/ey6ltz5r52n4k5gs0vxzig5fqtpn6g93.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                            </span>
+                </span>
+                </a>
+                <div class="dots"></div>
+
+            </div>
+        </div>
+
+        <div class="card-apartment-2__name">
+            <a class="card-apartment-2__link" href="/catalog/kommercheskaya-nedvizhimost/kommercheskoe-pomeshchenie-ul-dnepropetrovskaya-d-2-3-1-kv-8/">
+                Коммерческое помещение ул. Днепропетровская, д. 2.3.1, кв. 8        </a>
+        </div>
+
+        <div class="card-apartment-2__location">ул. Днепропетровская, д. 2.3.1</div>
+
+        <div class="card-apartment-2__price">
+            <div class="price price-current">
+                <div class="price__value-wrapper">
+                    <div class="price__value">68 802 500</div>
+                    <div class="price__suffix rouble">p</div>
+                </div>
+            </div>
+            <div class="card-apartment-2__volume">250 000 ₽/м²</div>
+        </div>
+
+
+        <div class="card-apartment-2__badges">
+
+
+
+
+            <div class="badge-product badge-product-due-date badge-product_type_surface badge-product_size_m">
+                Срок сдачи 03.09.2027            </div>
+
+        </div>
+    </div>
+
+
+</div><div style="" class=" card-wrapper block-content-realty__item product-item-container" id="bx_3966226736_10708_0f73996d13437b0b91038138616a89fe" data-entity="item">
+
+
+    <div class="card-apartment-2" data-coords="">
+
+
+
+        <div class="card-apartment-2__favorite" onclick="ym(20223217,'reachGoal','click_favorite')">
+            <div data-like="false" data-favorite="" data-id="10708" data-key="18" class="flat__card-like realty__card-like favorite favorite_empty favorite_theme_red favorite_size_m">
+                <div class="favorite__icon ">
+                    <svg width="24" height="21" viewBox="0 0 24 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3.71573 3.68905C6.00337 1.43698 9.71236 1.43698 12 3.68905C14.2876 1.43698 17.9966 1.43698 20.2843 3.68905C22.5719 5.94113 22.5719 9.59245 20.2843 11.8445L12.7015 19.3094C12.3123 19.6925 11.6877 19.6925 11.2985 19.3094L3.71573 11.8445C1.42809 9.59245 1.42809 5.94113 3.71573 3.68905Z" fill="white" stroke="gray" stroke-width="2.3"></path>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="card-apartment-2__images-wrapper">
+            <div class="card-apartment-2__images">
+
+                <div class="card-apartment-2__district">
+                    <img src="/upload/iblock/03f/b3egofhu6meq8m91bs1k45m0dz8yj5it.png" alt="" width="73" height="48" loading="lazy">
+                </div>
+                <a href="/catalog/kommercheskaya-nedvizhimost/kommercheskoe-pomeshchenie-ul-dnepropetrovskaya-d-2-3-1-kv-2/">
+                <span class="swiper">
+                    <span class="swiper-wrapper">
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/3ee/300_300_1/kswaaaezhii3vz3oufhqdypk3manirn0.png" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/d01/300_300_1/vn7p1v82gf9xagc369cbg5j3jc99xays.png" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/a57/300_300_1/3m6277ti7fomu2liymcza7kpg3mzcw3s.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                            </span>
+                </span>
+                </a>
+                <div class="dots"></div>
+
+            </div>
+        </div>
+
+        <div class="card-apartment-2__name">
+            <a class="card-apartment-2__link" href="/catalog/kommercheskaya-nedvizhimost/kommercheskoe-pomeshchenie-ul-dnepropetrovskaya-d-2-3-1-kv-2/">
+                Коммерческое помещение ул. Днепропетровская, д. 2.3.1, кв. 2        </a>
+        </div>
+
+        <div class="card-apartment-2__location">ул. Днепропетровская, д. 2.3.1</div>
+
+        <div class="card-apartment-2__price">
+            <div class="price price-current">
+                <div class="price__value-wrapper">
+                    <div class="price__value">70 512 500</div>
+                    <div class="price__suffix rouble">p</div>
+                </div>
+            </div>
+            <div class="card-apartment-2__volume">250 000 ₽/м²</div>
+        </div>
+
+
+        <div class="card-apartment-2__badges">
+
+
+
+
+            <div class="badge-product badge-product-due-date badge-product_type_surface badge-product_size_m">
+                Срок сдачи 03.09.2027            </div>
+
+        </div>
+    </div>
+
+
+</div><div style="" class=" card-wrapper block-content-realty__item product-item-container" id="bx_3966226736_10691_ec5d0e2cff91ab20debac17d8febe5be" data-entity="item">
+
+
+    <div class="card-apartment-2" data-coords="55.171316,61.377622">
+
+
+
+        <div class="card-apartment-2__favorite" onclick="ym(20223217,'reachGoal','click_favorite')">
+            <div data-like="false" data-favorite="" data-id="10691" data-key="18" class="flat__card-like realty__card-like favorite favorite_empty favorite_theme_red favorite_size_m">
+                <div class="favorite__icon ">
+                    <svg width="24" height="21" viewBox="0 0 24 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3.71573 3.68905C6.00337 1.43698 9.71236 1.43698 12 3.68905C14.2876 1.43698 17.9966 1.43698 20.2843 3.68905C22.5719 5.94113 22.5719 9.59245 20.2843 11.8445L12.7015 19.3094C12.3123 19.6925 11.6877 19.6925 11.2985 19.3094L3.71573 11.8445C1.42809 9.59245 1.42809 5.94113 3.71573 3.68905Z" fill="white" stroke="gray" stroke-width="2.3"></path>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="card-apartment-2__images-wrapper">
+            <div class="card-apartment-2__images">
+
+                <div class="card-apartment-2__district">
+                    <img src="/upload/iblock/14b/f659bfjpsb6nyipgosekrqbu5498qgv1.png" alt="" width="73" height="48" loading="lazy">
+                </div>
+                <a href="/catalog/kommercheskaya-nedvizhimost/kommercheskoe-pomeshchenie-ul-geroya-rossii-kislova-s-a-d-3-kv-507/">
+                <span class="swiper">
+                    <span class="swiper-wrapper">
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/ca3/300_300_1/p75giy1lbcl8ntsprbkvzau8yxp35s2c.png" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/1ca/300_300_1/12u8v2ud5p73wp2gu1b4d356d1a5iuqn.png" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/562/300_300_1/dmechqbv4soniljjhde0n2vslfrluibh.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/8c8/300_300_1/os1jmg5p0wm2595ytndcvgos0zkpwqee.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/a18/300_300_1/mhp0en6lbuujhbm5emmdb5360jk5337i.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/433/300_300_1/hwjb02f83k6vxzs3b99tfv1z6l2mqnrl.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/901/300_300_1/h2sgmxohw6ju78ytswf28mayh2df2e14.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/34c/300_300_1/3qffv21q8aqhcs4j1ciy5sy2etw5yv95.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/fa8/300_300_1/2go37jkzxlymlp81qa6yga23oc3hpfqf.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/284/300_300_1/d6j2fi0exknf4be24fwmf5fp7wle8if6.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/05c/300_300_1/kouc2b3ksk0ygjtrki1z2e70jpxd3uxn.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/3c7/300_300_1/cc1uhs1vre86fwxvruu0km4e3pbl5qes.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/c17/300_300_1/jvpu7dgnl5rf07j9njluf8jy7b46jz9d.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/eb5/300_300_1/kdlk1f4ex379fsw7hliz1ddfmbqt1lvb.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/cea/300_300_1/x18u8wkgogyzb8k38dh9rhmiutf4pc1u.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/4fe/300_300_1/1y63r53sx2mosg0hdid133l3dgpkmfkx.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/62a/300_300_1/i8bxlj93g1jij772jc98oq4azoy2vc0w.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/2c6/300_300_1/jhhxc5fj8155vxex9331sugb1zxpkx39.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/bc0/300_300_1/c3hco8oxtep31n5vpx7dtfx1903ra4zq.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/00e/300_300_1/obt0nbkrlw1pa1j3y5u4c4wt7jq7naad.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                            </span>
+                </span>
+                </a>
+                <div class="dots"></div>
+
+            </div>
+        </div>
+
+        <div class="card-apartment-2__name">
+            <a class="card-apartment-2__link" href="/catalog/kommercheskaya-nedvizhimost/kommercheskoe-pomeshchenie-ul-geroya-rossii-kislova-s-a-d-3-kv-507/">
+                Коммерческое помещение ул. Героя России Кислова С.а., д. 3, кв. 507        </a>
+        </div>
+
+        <div class="card-apartment-2__location">ул. Героя России Кислова С.а., д. 3</div>
+
+        <div class="card-apartment-2__price">
+            <div class="price price-current">
+                <div class="price__value-wrapper">
+                    <div class="price__value">91 275 000</div>
+                    <div class="price__suffix rouble">p</div>
+                </div>
+            </div>
+            <div class="card-apartment-2__volume">250 000 ₽/м²</div>
+        </div>
+
+
+        <div class="card-apartment-2__badges">
+
+
+
+
+            <div class="badge-product badge-product-due-date badge-product_type_surface badge-product_size_m">
+                Срок сдачи 30.06.2025            </div>
+
+        </div>
+    </div>
+
+
+</div><div style="" class=" card-wrapper block-content-realty__item product-item-container" id="bx_3966226736_10690_e7e5a53fd4b76e4dce4f311b34c340d4" data-entity="item">
+
+
+    <div class="card-apartment-2" data-coords="">
+
+
+
+        <div class="card-apartment-2__favorite" onclick="ym(20223217,'reachGoal','click_favorite')">
+            <div data-like="false" data-favorite="" data-id="10690" data-key="18" class="flat__card-like realty__card-like favorite favorite_empty favorite_theme_red favorite_size_m">
+                <div class="favorite__icon ">
+                    <svg width="24" height="21" viewBox="0 0 24 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3.71573 3.68905C6.00337 1.43698 9.71236 1.43698 12 3.68905C14.2876 1.43698 17.9966 1.43698 20.2843 3.68905C22.5719 5.94113 22.5719 9.59245 20.2843 11.8445L12.7015 19.3094C12.3123 19.6925 11.6877 19.6925 11.2985 19.3094L3.71573 11.8445C1.42809 9.59245 1.42809 5.94113 3.71573 3.68905Z" fill="white" stroke="gray" stroke-width="2.3"></path>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="card-apartment-2__images-wrapper">
+            <div class="card-apartment-2__images">
+
+                <div class="card-apartment-2__district">
+                    <img src="/upload/iblock/a91/z1s2v5udiuvl2ta8uo80i4bivdjdbdqq.png" alt="" width="73" height="48" loading="lazy">
+                </div>
+                <a href="/catalog/kommercheskaya-nedvizhimost/kommercheskoe-pomeshchenie-ul-molodogvardeytsev-d-34-kv-100/">
+                <span class="swiper">
+                    <span class="swiper-wrapper">
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/bee/300_300_1/ekhrck6s6foeiivbtmzmrc94clnmthfk.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/0ce/300_300_1/sqg0qo221g1wzehux0c25w9jaqw2zg19.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/00b/300_300_1/ymjn55qwkkvnh5ai3xlvwrjkqk7121kl.png" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/b66/300_300_1/68jbj8pukoxtptp2uqqlaasrwb6xxe6l.png" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/ab9/300_300_1/m13yyrv7yyp5el8drkqc9yrzm5hjsgm2.png" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                            </span>
+                </span>
+                </a>
+                <div class="dots"></div>
+
+            </div>
+        </div>
+
+        <div class="card-apartment-2__name">
+            <a class="card-apartment-2__link" href="/catalog/kommercheskaya-nedvizhimost/kommercheskoe-pomeshchenie-ul-molodogvardeytsev-d-34-kv-100/">
+                Коммерческое помещение ул. Молодогвардейцев, д. 34, кв. 100        </a>
+        </div>
+
+        <div class="card-apartment-2__location">ул. Молодогвардейцев, д. 34</div>
+
+        <div class="card-apartment-2__price">
+            <div class="price price-current">
+                <div class="price__value-wrapper">
+                    <div class="price__value">125 000 004</div>
+                    <div class="price__suffix rouble">p</div>
+                </div>
+            </div>
+            <div class="card-apartment-2__volume">139 245 ₽/м²</div>
+        </div>
+
+
+        <div class="card-apartment-2__badges">
+
+
+
+
+
+        </div>
+    </div>
+
+
+</div><div class="card-wrapper block-content-realty__item product-item-container" id="bx_3966226736_10697_362ce596257894d11ab5c1d73d13c755" data-entity="item">
+
+
+    <div class="card-apartment-2" data-coords="55.171316,61.377622">
+
+
+
+        <div class="card-apartment-2__favorite" onclick="ym(20223217,'reachGoal','click_favorite')">
+            <div data-like="false" data-favorite="" data-id="10697" data-key="18" class="flat__card-like realty__card-like favorite favorite_empty favorite_theme_red favorite_size_m">
+                <div class="favorite__icon ">
+                    <svg width="24" height="21" viewBox="0 0 24 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3.71573 3.68905C6.00337 1.43698 9.71236 1.43698 12 3.68905C14.2876 1.43698 17.9966 1.43698 20.2843 3.68905C22.5719 5.94113 22.5719 9.59245 20.2843 11.8445L12.7015 19.3094C12.3123 19.6925 11.6877 19.6925 11.2985 19.3094L3.71573 11.8445C1.42809 9.59245 1.42809 5.94113 3.71573 3.68905Z" fill="white" stroke="gray" stroke-width="2.3"></path>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="card-apartment-2__images-wrapper">
+            <div class="card-apartment-2__images">
+
+                <div class="card-apartment-2__district">
+                    <img src="/upload/iblock/14b/f659bfjpsb6nyipgosekrqbu5498qgv1.png" alt="" width="73" height="48" loading="lazy">
+                </div>
+                <a href="/catalog/kommercheskaya-nedvizhimost/kommercheskoe-pomeshchenie-ul-geroya-rossii-kislova-s-a-d-3-kv-550/">
+                <span class="swiper">
+                    <span class="swiper-wrapper">
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/8bd/300_300_1/j2338ojdmy8loxe9y7p29xdb759kfqv0.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/562/300_300_1/dmechqbv4soniljjhde0n2vslfrluibh.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/8c8/300_300_1/os1jmg5p0wm2595ytndcvgos0zkpwqee.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/a18/300_300_1/mhp0en6lbuujhbm5emmdb5360jk5337i.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/433/300_300_1/hwjb02f83k6vxzs3b99tfv1z6l2mqnrl.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/901/300_300_1/h2sgmxohw6ju78ytswf28mayh2df2e14.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/34c/300_300_1/3qffv21q8aqhcs4j1ciy5sy2etw5yv95.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/fa8/300_300_1/2go37jkzxlymlp81qa6yga23oc3hpfqf.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/284/300_300_1/d6j2fi0exknf4be24fwmf5fp7wle8if6.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/05c/300_300_1/kouc2b3ksk0ygjtrki1z2e70jpxd3uxn.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/3c7/300_300_1/cc1uhs1vre86fwxvruu0km4e3pbl5qes.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/c17/300_300_1/jvpu7dgnl5rf07j9njluf8jy7b46jz9d.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/eb5/300_300_1/kdlk1f4ex379fsw7hliz1ddfmbqt1lvb.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/cea/300_300_1/x18u8wkgogyzb8k38dh9rhmiutf4pc1u.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/4fe/300_300_1/1y63r53sx2mosg0hdid133l3dgpkmfkx.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/62a/300_300_1/i8bxlj93g1jij772jc98oq4azoy2vc0w.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/2c6/300_300_1/jhhxc5fj8155vxex9331sugb1zxpkx39.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/bc0/300_300_1/c3hco8oxtep31n5vpx7dtfx1903ra4zq.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/00e/300_300_1/obt0nbkrlw1pa1j3y5u4c4wt7jq7naad.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                            </span>
+                </span>
+                </a>
+                <div class="dots"></div>
+
+            </div>
+        </div>
+
+        <div class="card-apartment-2__name">
+            <a class="card-apartment-2__link" href="/catalog/kommercheskaya-nedvizhimost/kommercheskoe-pomeshchenie-ul-geroya-rossii-kislova-s-a-d-3-kv-550/">
+                Коммерческое помещение ул. Героя России Кислова С.а., д. 3, кв. 550        </a>
+        </div>
+
+        <div class="card-apartment-2__location">ул. Героя России Кислова С.а., д. 3</div>
+
+        <div class="card-apartment-2__price">
+            <div class="price price-current">
+                <div class="price__value-wrapper">
+                    <div class="price__value">27 450 000</div>
+                    <div class="price__suffix rouble">p</div>
+                </div>
+            </div>
+            <div class="card-apartment-2__volume">250 000 ₽/м²</div>
+        </div>
+
+
+        <div class="card-apartment-2__badges">
+
+
+
+
+            <div class="badge-product badge-product-due-date badge-product_type_surface badge-product_size_m">
+                Срок сдачи 30.06.2025            </div>
+
+        </div>
+    </div>
+
+
+</div><div class="card-wrapper block-content-realty__item product-item-container" id="bx_3966226736_10707_8e8f6cea7f5e44ced2966cbefca3ecfa" data-entity="item">
+
+
+    <div class="card-apartment-2" data-coords="">
+
+
+
+        <div class="card-apartment-2__favorite" onclick="ym(20223217,'reachGoal','click_favorite')">
+            <div data-like="false" data-favorite="" data-id="10707" data-key="18" class="flat__card-like realty__card-like favorite favorite_empty favorite_theme_red favorite_size_m">
+                <div class="favorite__icon ">
+                    <svg width="24" height="21" viewBox="0 0 24 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3.71573 3.68905C6.00337 1.43698 9.71236 1.43698 12 3.68905C14.2876 1.43698 17.9966 1.43698 20.2843 3.68905C22.5719 5.94113 22.5719 9.59245 20.2843 11.8445L12.7015 19.3094C12.3123 19.6925 11.6877 19.6925 11.2985 19.3094L3.71573 11.8445C1.42809 9.59245 1.42809 5.94113 3.71573 3.68905Z" fill="white" stroke="gray" stroke-width="2.3"></path>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="card-apartment-2__images-wrapper">
+            <div class="card-apartment-2__images">
+
+                <div class="card-apartment-2__district">
+                    <img src="/upload/iblock/03f/b3egofhu6meq8m91bs1k45m0dz8yj5it.png" alt="" width="73" height="48" loading="lazy">
+                </div>
+                <a href="/catalog/kommercheskaya-nedvizhimost/kommercheskoe-pomeshchenie-ul-dnepropetrovskaya-d-2-3-1-kv-1/">
+                <span class="swiper">
+                    <span class="swiper-wrapper">
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/3ee/300_300_1/kswaaaezhii3vz3oufhqdypk3manirn0.png" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/d01/300_300_1/vn7p1v82gf9xagc369cbg5j3jc99xays.png" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/a57/300_300_1/3m6277ti7fomu2liymcza7kpg3mzcw3s.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                                <span class="card-apartment-2__image">
+                            <img src="/upload/resize_cache/iblock/22b/300_300_1/ey6ltz5r52n4k5gs0vxzig5fqtpn6g93.jpg" alt="" width="181" height="184" loading="lazy">
+                        </span>
+                                            </span>
+                </span>
+                </a>
+                <div class="dots"></div>
+
+            </div>
+        </div>
+
+        <div class="card-apartment-2__name">
+            <a class="card-apartment-2__link" href="/catalog/kommercheskaya-nedvizhimost/kommercheskoe-pomeshchenie-ul-dnepropetrovskaya-d-2-3-1-kv-1/">
+                Коммерческое помещение ул. Днепропетровская, д. 2.3.1, кв. 1        </a>
+        </div>
+
+        <div class="card-apartment-2__location">ул. Днепропетровская, д. 2.3.1</div>
+
+        <div class="card-apartment-2__price">
+            <div class="price price-current">
+                <div class="price__value-wrapper">
+                    <div class="price__value">30 590 000</div>
+                    <div class="price__suffix rouble">p</div>
+                </div>
+            </div>
+            <div class="card-apartment-2__volume">250 000 ₽/м²</div>
+        </div>
+
+
+        <div class="card-apartment-2__badges">
+
+
+
+
+            <div class="badge-product badge-product-due-date badge-product_type_surface badge-product_size_m">
+                Срок сдачи 03.09.2027            </div>
+
+        </div>
+    </div>
+
+
+</div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 </body>
 </html>

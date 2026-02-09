@@ -1,0 +1,122 @@
+.popup {
+    opacity: 0;
+    visibility: hidden;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+    overflow: auto;
+    transition: all var(--speed-transition);
+}
+.popup.is-opened {
+    opacity: 1;
+    visibility: visible;
+}
+.popup.is-screen-fit .popup__inner {
+    align-items: center;
+}
+.popup.is-screen-overflow .popup__inner {
+    align-items: flex-start;
+}
+.popup__inner {
+    display: flex;
+    justify-content: center;
+    padding: 24px;
+    height: 100%;
+}
+.popup__content {
+    position: relative;
+    background-color: #fff;
+    padding: 48px;
+    width: 768px;
+}
+.popup__content-inner > *:first-child {
+    margin-top: 0;
+}
+.popup__content-inner > *:last-child {
+    margin-bottom: 0;
+}
+.popup__title {
+    margin: 0 0 24px;
+}
+.popup__close {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 48px;
+    height: 48px;
+    z-index: 1;
+}
+.popup__close span {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 2px;
+}
+.popup__close span::before,
+.popup__close span::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+}
+.popup__close span::before {
+    transform: rotate(45deg);
+    transition: all var(--speed-transition);
+}
+.popup__close span::after {
+    transform: rotate(-45deg);
+    transition: all var(--speed-transition);
+}
+.popup__close:hover span::before,
+.popup__close:hover span::after {
+    background-color: var(--color-primary);
+}
+.popup__overlay {
+    background-color: rgba(36, 36, 36, 0.73);
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 0;
+}
+@media only screen and (max-width: 767px) {
+    .popup__content-wrapper {
+        padding: 0;
+    }
+    .popup__content {
+        padding-top: 32px;
+        padding-bottom: 32px;
+    }
+}
+@media only screen and (max-width: 539px) {
+    .popup__inner {
+        padding: 0;
+    }
+    .popup__content {
+        width: 100%;
+        min-height: 100%;
+    }
+}
+
+.popup-success .popup__content {
+    width: 460px;
+}
+.popup-error .popup__content {
+    width: 460px;
+}
+.popup-sending .popup__content {
+    width: 260px;
+}
