@@ -106,4 +106,9 @@ const CustomPopup = function(settings) {
     }
 
     this.init();
+
+    return {
+        openPopup: this.openPopup.bind(this),
+    }
+
 }

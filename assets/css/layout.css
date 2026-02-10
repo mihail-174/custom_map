@@ -43,6 +43,25 @@ h3,
 .h3 {
     margin: var(--gap-h3);
 }
+
+a {
+    color: var(--color-link);
+    text-decoration: 1px underline var(--color-link-decoration);
+    transition: all var(--speed-transition);
+}
+a:hover {
+    color: var(--color-link-hover);
+    text-decoration-color: var(--color-link-decoration-hover);
+}
+a:focus {
+    color: var(--color-link-focus);
+    text-decoration-color: var(--color-link-decoration-focus);
+}
+b, strong {
+    font-weight: 700;
+    color: var(--color-text-strong);
+}
+
 .container {
     max-width: 1260px;
     padding: 0 16px;

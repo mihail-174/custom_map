@@ -3,14 +3,19 @@
     flex-direction: column;
     grid-gap: 64px;
 }
+.card-examples-detail__description {
+    margin-bottom: 16px;
+}
 
-#demo-1 {
+#demo-1a,
+#demo-1b {
     width: 100%;
     height: 400px;
     background-color: lightgrey;
     max-width: calc(100vw - 16px * 2);
 }
-#demo-1 > * {
+#demo-1a > *,
+#demo-1b > * {
     width: 100% !important;
 }
 #demo-2 {
